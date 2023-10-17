@@ -1,0 +1,38 @@
+PSEUDOCODE
+A very simple & high level form of computer language that is used in program design
+
+
+
+
+FLOWCHART
+It is a diagramatic representation of an approach. 
+This draws out all steps of your approahc in order.
+
+COMPONENTS OF FLOWCHART 
+1. Terminator : specifies start & end of program 
+2. Parallelogram : for taking input or showing output
+3. Rectangle : for operations & processes
+4. Diamond : for decision making (y/n)
+5. Circle : connectors
+6. Arrows : to depict flow of control 
+
+
+
+
+% (MODULO) OPERATOR 
+Gives remainder after division
+a%b = reminder of a/b
+
+
+
+
+WHAT IS A PROGRAMMING LANGUAGE ?
+Programming langauge is a way to communicate with computer. 
+It is a formal langauge which consists of sets of strings that produce variour kinds of machine output.
+Eg: C, C++, Java, Python, JavaScript etc.
+
+Every language must be written following some rules, called Syntax of that Language 
+A computer essentially only understands binary codes of 0s & 1s. A compiler processes the statement of a 
+programming language into Machine code (binary)
+
+Source Code -> Compiler -> Binary/Machine code -> Computer executes (.out or .exe)
