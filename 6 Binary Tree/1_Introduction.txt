@@ -19,8 +19,8 @@ TYPES OF TREE
     Creation :
     class Node {
         int data;
-        int Node *left;
-        int Node *right;
+        Node *left;
+        Node *right;
     }
 2. N-ary tree : Tree having multiple childs per each node.
     Creation :
@@ -28,3 +28,9 @@ TYPES OF TREE
         int data;
         list <Node*> child;
     }
+
+
+TRAVERSAL TYPES 
+1. Level Order Traversal 
+    Traversal the tree by printing 1 level at a time.
+    Solved using queue.
