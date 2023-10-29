@@ -1,0 +1,84 @@
+IDEs (INTEGRATED DEVELOPMENT ENVIRONMENT)
+An environment that helps you write, run and even debug code(in some cases) in programming language.
+Eg: VS CODE, Code Studio, Eclipse, NetBeans etc.
+
+
+
+
+FIRST PROGRAM IN C++
+1. Our program will find int main(){} & start executing from there
+2. int main() {}
+    {}, these brackets show scope of main function i.e. code which belongs to/is defined within int main()
+3. In C++, we use 'cout' to print something
+4. This cout is already defined in a file (header file) which must be included before using cout 
+    #include<file_name> is a preprocessor directive which runs before the program is compiled and includes 
+    the file to be used later in source code. A file called iostream has cout defined in it.
+5. Namespaces : using namespace std;
+6. Using cout : 
+    We use '<<' after cout to display something to standard output (your screen) within std namespace
+7. endl : used to enter new line, just like Enter.
+    endl is like "/n" which is a new line escape sequence character used in various other languages also.
+    cout << Namaste Duniya" << endl 
+8. ; used to terminate statements
+
+
+
+
+DATATYPES
+Different types of data to be stored in memory, eg: int, float, character, double etc.
+Different datatypes use different amounts of memory.
+Amount of memory used also depends on architecture of your CPU.
+
+DATATYPE            MEANING                     SIZE(IN BYTES)
+int             Integer                            2 or 4
+float           Floating-point                        4
+double          Double Floating-point                 8
+char            Character                             1
+wchar_t         Wide Character                        2
+bool            Boolean                               1
+void            Empty                                 0   
+
+CHARACTER 
+A 1-byte(8bits) datatype that takes 1 character. char ch = 'a';
+
+BOOLEAN 
+True/False. Takes 1 bit and 1:True, 0:False 
+bool isGood = 1;
+bool isBad = false;
+
+FLOAT/DOUBLE 
+Float takes 4/8 bytes 
+Double takes 8 bytes 
+float num1 = 1.2;
+double num2 = 2.4;
+
+
+
+
+VARIABLE NAMING/NOMENCLATURE 
+1. Can contain alphabets, numbers & underscores.
+2. Cannot start with a number.
+3. Cannot be keywords like int, count, double, bool etc.
+4. Case sensitive.
+5. Cannot contain special symbols like %, $, !, # etc.
+# Don't use variable names mutliple times.
+# Check the sice of different datatypes for your system using sizeof(variable_name);
+
+
+
+
+HOW IS DATA STORED IN MEMORY ?
+int a=8;
+In binary, 8 is 1000
+int takes 4 bytes(32 bits), so stored as 00000000000000000000000000001000 (32 bits)
+char c ='a'
+a = 97 , in binary 97 = 1100001, stored as 01100001 (1 byte = 8 bits)
+Characters are mapped to standard ASCII values 
+'a'->97 to 'z'->122
+'A'->65 to 'Z'->90
+
+
+
+
+TYPE CASTING AND STORING VARIABLES 
+Conversion of 1 datatype to another (if it's valid) is called Type Casting 

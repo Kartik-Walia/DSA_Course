@@ -36,3 +36,4 @@ A computer essentially only understands binary codes of 0s & 1s. A compiler proc
 programming language into Machine code (binary)
 
 Source Code -> Compiler -> Binary/Machine code -> Computer executes (.out or .exe)
+Compiler does Translation/Conversion as well as It catches errors 
