@@ -34,3 +34,13 @@ TRAVERSAL TYPES
 1. Level Order Traversal 
     Traversal the tree by printing 1 level at a time.
     Solved using queue.
+2. Reverse Order Traversal (HOMEWORK)
+3. Inorder Traversal 
+    L N R 
+    (Go to left part, Print, Go to right part)
+4. PreOrder Traversal 
+    N L R 
+    (Print, Go to left part, Go to right part)
+5. PostOrder Traversal 
+    L R N
+    (Go to left part, Go to right part, print)
