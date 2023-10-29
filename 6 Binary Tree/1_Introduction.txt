@@ -1,0 +1,30 @@
+A tree data structure is a hierarchical non -linear structure that is used to represent and organize data in a 
+way that is easy to navigate and search. 
+It is a collection of nodes that are connected by edges and has a hierarchical relationship between the nodes. 
+
+
+BASIC TERMS 
+- Node : Each element fo tree 
+- Root : Topmost node of the tree
+- Children : Node below another node 
+- Parent : Node above another node 
+- Sibling : Nodes having same parents 
+- Ancestor : All nodes bove a node 
+- Descendant : All nodes below a node 
+- Leaf : Node having no children 
+
+
+TYPES OF TREE 
+1. Binary tree : Tree having atmost 2 childs per each node.
+    Creation :
+    class Node {
+        int data;
+        int Node *left;
+        int Node *right;
+    }
+2. N-ary tree : Tree having multiple childs per each node.
+    Creation :
+    class Node {
+        int data;
+        list <Node*> child;
+    }
