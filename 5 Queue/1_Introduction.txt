@@ -6,9 +6,22 @@ the list are made at the other end.
 The element which is first pushed into the order, the delete operation is first performed on that.
 
 We always push new entry from rear & pop from front.
+insert/push -> Enqueue
+pop -> Dequeue
+
 
 CHARACTERISTIC OF QUEUE 
 - Can handle multiple data.
 - We can access both ends.
 - Queues are fast & flexible.
+
+
+IMPLEMENTATIONS OF QUEUE 
+1. Array Implementation
+    - array : for storing queue elements 
+    - front : index where the first element is stored in the array representing the queue.
+    - rear : index where the last element is stored in an array representing the queue.
+    - size : size of array 
+
+    All operations Enqueue, Dequeue, Front, isEmpty have time complexity O(1).
 
