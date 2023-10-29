@@ -18,14 +18,14 @@ class Node{
 };
 
 // Function to build tree
-Node *buildTree(Node* root){
+Node *buildTree(Node *root){
     cout << "Enter the data: " << endl;
     int data;
     cin >> data;
 
     root = new Node(data);
 
-    if(data == -1) {    // Assuming data -1 as NULL
+    if (data == -1) {   // Assuming data -1 as NULL 
         return NULL;
     }
 
@@ -37,18 +37,16 @@ Node *buildTree(Node* root){
     return root;
 }
 
-
-// InOrder Traversal
-void inOrder(Node *root){
-    // Base case 
-    if (root==NULL) {
+// PreOrder Traversal
+void preOrder(Node *root){
+    if(root == NULL) {
         return;
     }
 
-    inOrder(root->left);
-    cout << root->data << " ";
-    inOrder(root->right);
-} 
+    cout << root-> data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
+}
 
 int main()
 {
@@ -58,9 +56,8 @@ int main()
     root = buildTree(root);
     // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
 
-    // InOrder Traversal
-    inOrder(root);
-    
+    // PreOrder Traversal
+    preOrder(root);
 
     return 0;
 }
