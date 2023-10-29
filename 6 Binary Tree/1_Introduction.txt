@@ -44,3 +44,6 @@ TRAVERSAL TYPES
 5. PostOrder Traversal 
     L R N
     (Go to left part, Go to right part, print)
+    
+
+HOMEWORK write codes for In, post, pre order traversal without using recurssion (with iteration)
