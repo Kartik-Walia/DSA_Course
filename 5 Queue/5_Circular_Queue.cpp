@@ -2,6 +2,12 @@
 // When rear reaches end at time of enqueue, make rear to start to maintain cyclic nature 
 // When front reaches end at time of enqueue, make front to start to maintain cyclic nature 
 
+// REMEMBER :
+// -> Full/Empty 
+// -> First/Single Element 
+// -> Maintain Cyclic Nature 
+// -> Normal Flow 
+
 #include<iostream>
 using namespace std;
 

@@ -25,3 +25,27 @@ IMPLEMENTATIONS OF QUEUE
 
     All operations Enqueue, Dequeue, Front, isEmpty have time complexity O(1).
 
+
+INPUT RESTRICTED QUEUE 
+Inserting is allowed onlt at 1 side (rear)
+Popping is allowed from both sides 
+- push_back (Inserting from rear)
+- pop_front (Popping from front)
+- pop_back (Popping from rear)
+
+
+OUTUT RESTRICTED QUEUE 
+Inserting is allowed from both sides 
+Popping is allowed onlt at 1 side (front)
+- push_front (Inserting from front)
+- push_back (Inserting from rear)
+- pop_front (Popping from front)
+
+
+DOUBLY ENDED QUEUE 
+Inserting & Popping both are allowed from both sides 
+- push_front (Inserting from front)
+- push_back (Inserting from rear)
+- pop_front (Popping from front)
+- pop_back (Popping from rear)
+
