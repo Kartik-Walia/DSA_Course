@@ -8,7 +8,7 @@ class Queue{
     public:
     // Implement the constructor 
     Queue(){
-        size = 10001;
+        size = 1001;
         arr = new int[size];
         front = rear = 0;
     }
@@ -22,8 +22,18 @@ class Queue{
         }
     }
 
+    bool isFull(){  
+        // Size bcoz after inserting 1st element, rear=2 i.e. it is 1 step ahead
+        // So, when last elment is inserted at size-1 index, then rear=size
+        if(rear==size){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     void enqueue(int data){
-        if (rear == size){  // Check if Queue is full
+        if (isFull()){ 
             cout << "Queue is Full" << endl;
         } else {
             arr[rear] = data;
@@ -36,7 +46,7 @@ class Queue{
             cout << "Queue is Empty" << endl;
             return -1;
         } else {
-            int tmp = arr[front];
+            int val = arr[front];
             arr[front] = -1;
             front++;
 
@@ -45,7 +55,7 @@ class Queue{
                 front = rear = 0;
             }
 
-            return tmp;
+            return val;
         }
     }
 

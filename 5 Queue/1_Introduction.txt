@@ -27,7 +27,7 @@ IMPLEMENTATIONS OF QUEUE
 
 
 INPUT RESTRICTED QUEUE 
-Inserting is allowed onlt at 1 side (rear)
+Inserting is allowed only at 1 side (rear)
 Popping is allowed from both sides 
 - push_back (Inserting from rear)
 - pop_front (Popping from front)
@@ -42,7 +42,7 @@ Popping is allowed onlt at 1 side (front)
 - pop_front (Popping from front)
 
 
-DOUBLY ENDED QUEUE 
+DOUBLY ENDED QUEUE (DE_QUEUE)
 Inserting & Popping both are allowed from both sides 
 - push_front (Inserting from front)
 - push_back (Inserting from rear)
