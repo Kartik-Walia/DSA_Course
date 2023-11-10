@@ -1,0 +1,73 @@
+Array = {62, 31, 70, 91, 25, 11, 9, 61, 73, 6}
+Implementing according to min heap property 
+
+Step 1 (Insert 62):
+   62
+
+Step 2 (Insert 31):
+   31
+  /
+ 62
+
+Step 3 (Insert 70):
+   31
+  / \
+ 62  70
+
+Step 4 (Insert 91):
+   31
+  / \
+ 62  70
+/
+91
+
+Step 5 (Insert 25):
+    25
+   / \
+  31  70
+ /  \
+91  62
+
+Step 6 (Insert 11):
+     11
+   /    \
+  31     25
+ /  \    /
+91  62  70
+
+Step 7 (Insert 9):
+     9
+   /    \
+  31     11
+ /  \    / \
+91  62  70  25
+
+Step 8 (Insert 61):
+         9
+       /    \
+      31     11
+     /  \    / \
+    91  62  70  25
+   /
+ 61   
+
+Step 9 (Insert 73):
+            9
+         /     \
+       31       11
+     /    \    /   \
+    91    62  70    25
+   / \
+ 61  73
+
+Step 10 (Insert 6):
+            6
+         /     \
+        9       11
+     /    \    /   \
+    91    31  70    25
+   / \    /
+ 61  73  62
+
+
+Final Result : {6, 9, 11, 91, 31, 70, 25, 61, 73, 62}
