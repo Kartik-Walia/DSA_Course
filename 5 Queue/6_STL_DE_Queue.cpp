@@ -21,12 +21,9 @@ int main(){
 
     d.pop_back();
 
-    if (d.empty())
-    {
+    if (d.empty()){
         cout << "queue is empty" << endl;
-    }
-    else
-    {
+    }else{
         cout << "queue is not empty " << endl;
     }
 }

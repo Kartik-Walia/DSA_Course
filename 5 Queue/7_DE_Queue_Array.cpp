@@ -1,5 +1,7 @@
 // In case of Doubly Ended queue, front & rear starts from -1 instead of 0
 
+// Phle change kiya fir dala 
+
 // REMEMBER :
 // -> Full/Empty
 // -> First/Single Element
@@ -9,15 +11,13 @@
 #include <iostream>
 using namespace std;
 
-class Dequeue
-{
+class DEqueue{
     int *arr;
     int front, rear, size;
 
 public:
     // Implement the constructor
-    Dequeue(int n)
-    {
+    DEqueue(int n){
         size = n;
         arr = new int[size];
         front = rear = -1;
@@ -46,6 +46,7 @@ public:
     // Returns the first element of the deque. If the deque is empty, it returns -1.
     int getFront(){
         if (isEmpty()){
+            cout<<"DE_Queue is empty!"<<endl;
             return -1;
         } else {
             return arr[front];
@@ -55,6 +56,7 @@ public:
     // Returns the last element of the deque. If the deque is empty, it returns -1.
     int getRear(){
         if (isEmpty()){
+            cout<<"DE_Queue is empty!"<<endl;
             return -1;
         } else {
             return arr[rear];
@@ -64,6 +66,7 @@ public:
     // Pushes 'X' in the front of the deque. Returns true if it gets pushed into the deque, and false otherwise.
     bool pushFront(int x){
         if (isFull()){
+            cout<<"Queue Overflow!"<<endl;
             return false;
         } else if (isEmpty()) {   // First element to push
             front = rear = 0;
@@ -82,6 +85,7 @@ public:
     // Similar to Circular Queue's Enqueue
     bool pushRear(int x){
         if (isFull()){
+            cout << "Queue Overflow!" << endl;
             return false;
         } else if (isEmpty()) {   // First element to push
             front = rear = 0;
@@ -100,10 +104,11 @@ public:
     // Similar to Circular Queue's Dequeue 
     int popFront(){
         if(isEmpty()){
+            cout<<"Queue underflow!"<<endl;
             return -1;
         } 
 
-        int ans = arr[front];
+        int removedVal = arr[front];
         arr[front] = -1;
         if (front == rear) {     // Single element
             front = rear = -1;
@@ -113,16 +118,17 @@ public:
             front++;
         }
 
-        return ans;
+        return removedVal;
     }
 
     // Pops an element from the back of the deque. Returns -1 if the deque is empty, otherwise returns the popped element.
     int popRear(){
         if(isEmpty()){
+            cout << "Queue underflow!" << endl;
             return -1;
         } 
 
-        int ans = arr[rear];
+        int removedVal = arr[rear];
         arr[rear] = -1;
         if (front == rear) {     // Single element
             front = rear = -1;
@@ -132,14 +138,14 @@ public:
             rear--;
         }
 
-        return ans;
+        return removedVal;
     }
 };
 
 
 int main()
 {
-    Dequeue d(100);
+    DEqueue d(100);
 
     d.pushFront(12);
     d.pushRear(14);
