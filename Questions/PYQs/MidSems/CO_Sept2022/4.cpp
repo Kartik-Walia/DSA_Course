@@ -45,8 +45,7 @@ int DeleteQ(){
         }
         
         if(deletedCount[removedVal]==0){
-            arr[rear]=removedVal;
-            rear++;
+            InsertQ(removedVal);
             deletedCount[removedVal]+=1;
         } else {
             deletedCount[removedVal]=0;
@@ -79,34 +78,44 @@ void Display() {
 };
 
 int main(){
-    modifiedQueue myQueue(5);
+    modifiedQueue myQueue(6);
 
+    cout<<"Inserting 1"<<endl;
     myQueue.InsertQ(1);
     myQueue.Display();
 
+    cout << "Inserting 2" << endl;
     myQueue.InsertQ(2);
     myQueue.Display();
 
+    cout << "Inserting 3" << endl;
     myQueue.InsertQ(3);
     myQueue.Display();
 
+    cout << "Deleting 1 (first time)" << endl;
     myQueue.DeleteQ();
     myQueue.Display();
-    
+
+    cout << "Deleting 2 (first time)" << endl;
     myQueue.DeleteQ();
     myQueue.Display();
-    
+
+    cout << "Deleting 3 (first time)" << endl;
     myQueue.DeleteQ();
     myQueue.Display();
-    
+
+    cout << "Deleting 1 (second time)" << endl;
     myQueue.DeleteQ();
     myQueue.Display();
-    
+
+    cout << "Deleting 2 (second time)" << endl;
     myQueue.DeleteQ();
     myQueue.Display();
-    
+
+    cout << "Deleting 3 (second time)" << endl;
     myQueue.DeleteQ();
     myQueue.Display();
+
 
     return 0;
 }
