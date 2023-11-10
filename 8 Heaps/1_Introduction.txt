@@ -17,11 +17,17 @@ HEAP IMPLEMENTATION
 It's done in form of array 
 We place nothing at 0 index
 
-Basic Property :
+Basic Property (1-based indexing):
 If any node is at ith index, then 
 - It's left child would be at 2*i index 
 - It's right child would be at (2*i)+1 index 
 - It's parent would be at i/2 index 
+- It's leaf nodes lies from (n/2)+1 to nth index, where n is no. of elements in heap 
+
+For 0-based indexity,
+- Left child is at (2*i)+1 index 
+- Right child is at (2*i)+2 index 
+- Heapify runs from (n/2)-1 to >=0
 
 
 INSERTION IN HEAP (Max heap)
@@ -36,3 +42,46 @@ Remember we're talking about deletion of Root node
 3. Propagate root node to it's correct position 
     (by comparing it with it's largest child among both children on basis of heap order property)
 Time Complexity is O(logn)
+
+
+HEAPIFY ALGORITHM
+1 node ko utha ke uski sahi jaagh pe leke jaana heapify algorithm ka kaam hai !
+Heapify function uss ek index se leke neche tak, poore part ko heap mei convert krdega 
+
+Convert input array to Heap 
+All leaf nodes can be assumed as Heap itself, no need to process Leaf nodes (No need to take them to right place)
+If we're processing 1 to n index, then we don't need to process its (n/2)+1 to n index part bcoz they're heaps
+So, we only need to process the part from 1 to n/2, that is take these nodes to their right place
+Assume we're coming from right 
+1. Run a loop from n/2 to greater than 0, inside the loop we run hapify algorithm :  heapify(arr, size, i)
+2. Propagate each node to it's correct position 
+    (by comparing it with it's largest child among both children on basis of heap order property)
+
+Time Complexity of heapify operation is O(logn) 
+Build Heap from heapify has Time Complexity of O(n)
+
+Time Complexity Analysis:
+- The loop for(i/2 -> >0) iterates over each non-leaf node in reverse order.
+- For each non-leaf node, the heapify operation is applied.
+- The heapify operation has a time complexity of O(log n), where n is the number of elements in the heap.
+- Since there are n/2 non-leaf nodes in heap, total time complexity is sum of the logn for each non-leaf node.
+- The sum of the logarithmic values for all non-leaf nodes can be bounded by a constant factor.
+Therefore, the overall time complexity is O(n).
+
+The bottom-up approach to building a heap using this loop has a linear time complexity of O(n).
+This makes it more efficient than inserting elements one by one into an initially empty heap, 
+which would take O(nlogn) time.
+
+
+HEAP SORT (Max heap)
+1. We know root node is largest, swap root node with last node 
+2. Ignore last element as it got already sorted, consider remaining heap (By doing size--)
+3. Take root node to correct position (By Heapify algorithm)
+4. Now repeat all above steps for remaining heap till size of heap is greater than 1
+Time Complexity is O(nlogn)
+Heap sort includes both Building Heap & Heap sort logic 
+
+
+PRIORITY QUEUE 
+By default it makes max heap 
+You need to import queue header file 
