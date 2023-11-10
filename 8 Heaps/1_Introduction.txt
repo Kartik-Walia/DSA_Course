@@ -1,0 +1,38 @@
+WHAT IS HEAP ?
+Heap is a data structure. 
+Heap is a complete bindary tres (BST) that comes with a heap order property.
+
+
+WHAT IS CBT (Complete Binary Tree) ?
+- Every level is fully filled except the last level
+- Nodes always added from the left (Nodes always leans towards the left)
+
+
+WHAT IS HEAP ORDER PROPERTY ?
+1. Max Heap : For each node, child has lower value than parent 
+2. Min Heap : For each node, child has higher value than parent 
+
+
+HEAP IMPLEMENTATION 
+It's done in form of array 
+We place nothing at 0 index
+
+Basic Property :
+If any node is at ith index, then 
+- It's left child would be at 2*i index 
+- It's right child would be at (2*i)+1 index 
+- It's parent would be at i/2 index 
+
+
+INSERTION IN HEAP (Max heap)
+1. Insert the value at end (last index)
+2. Take it to it's correct position (by comparing it with it's parent on basis of heap order property) 
+Time Complexity is O(logn)
+
+DELETION IN HEAP (Max heap)
+Remember we're talking about deletion of Root node 
+1. Put or Swap first node (root node) with Last node 
+2. Remove last node 
+3. Propagate root node to it's correct position 
+    (by comparing it with it's largest child among both children on basis of heap order property)
+Time Complexity is O(logn)
