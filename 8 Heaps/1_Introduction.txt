@@ -72,6 +72,9 @@ The bottom-up approach to building a heap using this loop has a linear time comp
 This makes it more efficient than inserting elements one by one into an initially empty heap, 
 which would take O(nlogn) time.
 
+Always remember < & > comes in case of 0-based indexing 
+Always remember <= & >= comes in case of 1-based indexing 
+
 
 HEAP SORT (Max heap)
 1. We know root node is largest, swap root node with last node 
