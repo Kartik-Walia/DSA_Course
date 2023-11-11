@@ -147,7 +147,7 @@ int main(){
       // Passing end as size-1 
       Node *root = buildTree(preOrder, inOrder, 0, sizeof(preOrder)/sizeof(preOrder[0]) - 1, 0, sizeof(inOrder)/sizeof(inOrder[0]) - 1);
 
-      cout << "Post-order Traversal of the Constructed Tree: ";
+      cout << "Post-order Traversal of Constructed Tree: ";
       postOrder(root);
       cout << endl;
 
