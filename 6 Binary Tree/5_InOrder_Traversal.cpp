@@ -41,7 +41,7 @@ Node *buildTree(Node* root){
 // InOrder Traversal
 void inOrder(Node *root){
     // Base case 
-    if (root==NULL) {
+    if (root == NULL) {
         return;
     }
 

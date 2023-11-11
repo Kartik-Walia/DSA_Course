@@ -1,4 +1,4 @@
-A tree data structure is a hierarchical non -linear structure that is used to represent and organize data in a 
+A tree data structure is a hierarchical non-linear structure that is used to represent and organize data in a 
 way that is easy to navigate and search. 
 It is a collection of nodes that are connected by edges and has a hierarchical relationship between the nodes. 
 
@@ -9,7 +9,7 @@ BASIC TERMS
 - Children : Node below another node 
 - Parent : Node above another node 
 - Sibling : Nodes having same parents 
-- Ancestor : All nodes bove a node 
+- Ancestor : All nodes above a node 
 - Descendant : All nodes below a node 
 - Leaf : Node having no children 
 
@@ -30,11 +30,57 @@ TYPES OF TREE
     }
 
 
+
+CREATION 
+First whole left heirarchy is traversed then comes the chance for right traversing 
+We need to use a separator to get know when a level is completed 
+Add separator into queue after each level is completed (use NULL as separator)
+Now whenever a level gets completed, press Enter 
+
+Algortihm :
+1. Create a new Node with the read data.
+2. If data is -1, return NULL.
+3. Recursive Call for Left child & Right child 
+4. Return the pointer to the root.
+
+
 TRAVERSAL TYPES 
 1. Level Order Traversal 
     Traversal the tree by printing 1 level at a time.
     Solved using queue.
-2. Reverse Order Traversal (HOMEWORK)
+
+    Algorithm :
+    1. Create an empty queue q.
+    2. Enqueue the root node into q.
+    3. Enqueue a NULL separator to mark the end of the first level.
+    4. Run a loop until the queue is not empty:
+        a. Dequeue a node temp from q.
+        b. If temp is NULL, it means the previous level is completely traversed. 
+            Print a newline and enqueue a NULL if there are more levels.
+        c. If temp is not NULL, print the data of temp.
+            Enqueue the left child of temp if it exists.
+            Enqueue the right child of temp if it exists.
+2. Reverse Level Order Traversal (HOMEWORK)
+    Solved using a queue and a stack.
+    This code uses a stack to store nodes at each level in reverse order and then prints or processes the 
+    nodes from the stack.
+
+    Algorithm :
+    1. If the root is NULL, return.
+    2. Initialize an empty queue (q) and a stack (s).
+    3. Enqueue the root into the queue.
+    4. Enqueue a NULL as a separator into the queue.
+    5. While the queue is not empty:
+        a. Dequeue a node (temp) from the front of the queue.
+        b. Push temp into the stack.
+        c. If temp is NULL, the level is complete. Enqueue a NULL if the queue is not empty.
+        d. If temp is not NULL:
+            Enqueue the left child of temp if it exists.
+            Enqueue the right child of temp if it exists.
+    6. While the stack is not empty:
+        a. Pop a node from the top of the stack (temp).
+        b. If temp is NULL, print a newline.
+        c. If temp is not NULL, print the data of temp followed by a space.
 3. Inorder Traversal 
     L N R 
     (Go to left part, Print, Go to right part)

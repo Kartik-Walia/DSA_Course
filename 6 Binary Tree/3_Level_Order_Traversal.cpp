@@ -46,7 +46,7 @@ void levelOrderTraversal(Node* root){
     queue<Node*> q;
 
     q.push(root);   // Didn't used root->data bcoz we're using Node* not Node
-    q.push(NULL);   // Adding a Separator 
+    q.push(NULL);   // Adding a Separator (bcoz in case of root there's only 1 node in that level)
 
     while(!q.empty()) {
         Node *temp = q.front();
@@ -63,13 +63,10 @@ void levelOrderTraversal(Node* root){
             if (temp->left) { // If temp left is NOT NULL
                 q.push(temp->left);
             }
-
             if (temp->right) { // If temp right is NOT NULL
                 q.push(temp->right);
             }
         }
-
-        
     }
 }
 
@@ -78,7 +75,7 @@ int main()
     Node *root = NULL;
 
     // Creating a tree
-    root = buildTree(root);
+    root = buildTree(root); 
     // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1 
 
     // Level Order Traversal
