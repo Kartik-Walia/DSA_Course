@@ -1,0 +1,16 @@
+Hashmap is a data structure which is used to store key value pairs <key, value>
+Eg : map< node, int > m;
+
+
+IMPLEMENTATION 
+Such that insertion, deletion & searching are done in constant time O(1)
+
+Linked Lists can't be used bcoz it does all 3 in O(n) time compexity
+BST can't be used bcoz it does all 3 in O(logn) time compexity
+
+We use concept of Hashtable for doing all 3 in O(1) time compexity
+
+
+INBUILT STUFF 
+1. map -> O(logn) Complexity 
+2. unordered_map -> O(1) Complexity
