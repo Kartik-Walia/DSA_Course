@@ -1,0 +1,50 @@
+Graph is a type of a data structure which is combination of nodes and edges
+Node : entity to store data
+Edges : for connecting nodes 
+Path : Sequence of nodes you're travelling in which each node comes exactly once 
+
+
+TYPES OF GRAPH 
+1. Undirected Graph 
+    Can go from U to V as well as V to U
+    Represented using lines
+    Degree : Degree of a vertex is given by no. of edges connected to it 
+2. Directed Graph
+    Can go only from 1 way either U to V or V to U
+    Represented using line with arrows
+    Indegree : Indegree of a vertex is given by no. of edges coming towards the vertex 
+    Outdegree : Outdegree of a vertex is given by no. of edges going away from the vertex 
+
+
+WEIGHTED GRAPH 
+Graphs having wieghts over it's edges 
+1. Weighted Undirected Graph : If no weights given, assume weights as 1 on each edge 
+2. Weighted Directed Graph : If no weights given, assume wieghts as 1 on each edge 
+
+
+CYCLIC GRAPH 
+If in a graph, you're able to create a path which allow you to reach to an already travelled node again, 
+then such a graph is called Cyclic Graph 
+
+
+ACYCLIC GRAPH 
+If in a graph, you're unable to create a path which allows you to reach to an already travelled node again, 
+then such a graph is called Acyclic Graph 
+
+
+GRAPH REPRESENTATION 
+i/p -> (no. of nodes, no. of edges & edges list)
+1. Adjacency Matrix 
+    Create a 2D adjacency matrix 
+    Where index represents nodes 
+    At places nodes connected, put 1
+    At places nodes are not connected, put 0
+
+    Space Compexity : O(n^2), where n represents no. of nodes 
+    Do this using 2 for loops
+2. Adjacency List 
+    List Nodes -> tell what connection are available 
+    Ek entity ke corresponding uske saare neighbours hain 
+    Since 2nd entity mei bhot saare neighbours aa skte hain, toh voh ek list hogi & 1st entity is single object
+    It can be implemented using map 
+    Eg : 0 -> 1, 4 can be implemented as map< int , list<int> >;
