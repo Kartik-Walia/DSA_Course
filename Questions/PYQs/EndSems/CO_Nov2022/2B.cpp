@@ -30,32 +30,20 @@ Node *buildTree(Node *root){
     return root;
 }
 
-bool preOrder(Node *root) {
-    if (root == NULL) { // Base case
+bool isMaxOrder(Node *root) {
+    // Leaf node (Base Case)
+    if(root->left == NULL && root->right == NULL) {
         return true;
     }
-    
-    if ((root->left && root->left->data > root->data) || (root->right && root->right->data > root->data)) {
-        return false;
-    }    
 
-    if(!preOrder(root->left)) {
-        return false;
-    }
-    
-    if(!preOrder(root->right)) {
-        return false;
-    }
-
-
-    return true;
-}
-
-bool isMaxHeap(Node *root) {
-    if(preOrder(root)) {
-        return true; 
+    // Only left child exist
+    if (root->right == NULL) {
+        return (root->data > root->left->data);
     } else {
-        return false;
+        bool left = isMaxOrder(root->left);
+        bool right = isMaxOrder(root->right);
+
+        return (left && right && (root->data > root->left->data) && (root->data > root->right->data));
     }
 }
 
@@ -68,7 +56,7 @@ int main(){
 
     // 6 5 3 -1 -1 2 -1 -1 4 1 -1 -1 8 -1 -1
     
-    cout << (isMaxHeap(root) ? "Yes, it satisfies max heap property" : "No, it doesn't satisfies max heap property") << endl;
+    cout << (isMaxOrder(root) ? "Yes, it satisfies max heap property" : "No, it doesn't satisfies max heap property") << endl;
 
     return 0;
 }

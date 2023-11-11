@@ -27,7 +27,7 @@ void heapSort(int arr[], int n){
         swap(arr[1], arr[size]);   // Swap root node with last node 
         size--; // Consider remaining heap (remove last element)
 
-        heapifyMax(arr, size, 1);   // Take root node to it's correct position
+        heapifyMax(arr, size, 1);   // Take root node to it's correct position (1-based indexing)
     }
 }
 
