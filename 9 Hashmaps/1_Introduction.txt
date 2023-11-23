@@ -14,3 +14,77 @@ We use concept of Hashtable for doing all 3 in O(1) time compexity
 INBUILT STUFF 
 1. map -> O(logn) Complexity 
 2. unordered_map -> O(1) Complexity
+
+
+BUCKET ARRAY
+It's an array used to store values & it's indexes are mapped with Keys using Hash functions 
+
+
+HASH FUNCTIONS 
+It's combination of Hash Code and Compression function 
+It's used to map key to index of bucket array 
+1. Hash Code : 
+    Conversion to int for any type of object (string, char, etc.), so that it can be mapped to index of 
+    bucket array, this work is done by Hash code.
+    Eg-1 : Identity function (Jo i/p mei diya vohi merko o/p mei laake de dega)
+
+    Why Hash Code is needed ?
+    For conversion & for uniform distribution.
+2. Compression Function :
+    The output given by Hash Code may exceed the range of bucket array. 
+    The int output given by Hash code must be bought in range of the bucket array, this work is done by 
+    Compression function.
+    Eg : Let's say output of Hash code is 25
+        If i mode it with size of array, 25%7, then answer would come in rnage of array (0-6)
+
+
+COLLISION 
+"kartik" -> HC -> 23 
+Let the logic be sum of ASCII values like k+a+r+t+i+k = 606, then CF applied % and answer comes out to be 23
+Let's say other input is "kartki", then as per above logic it would also give 23 as output 
+Means you're mapping same integer for 2 different strings (input), and this is wrong!
+Both keys cannot be placed at same index value i.e. they cannot be mapped to same value 
+When both keys are mapped to same value, then it's known as "Collision", thatswhy HF does uniform distribution
+
+
+COLLISION HANDLING 
+Collisiong handling can be done in 2 ways :
+1. Open Hashing : Same place par he jao 
+    In this, Head of a Linked List is stored at required index 
+    Then multiple keys are stored in that linked list one by one 
+
+    Let's say both "kartik" & "kartki" gives same output 23 & request to come at 7th index 
+    Then in case of open hashing, a Head would get stored at 7th index, this head is of a linked list 
+    Then firstly "kartik" gets stored in first element of the linked list to which Head points 
+    and then "kartki" gets stored in second element of the linked list to which Head points 
+
+    This is also known as "Separate Chaining"
+2. Closed Addressing : Agli khaali jagah dekhlo 
+    But konsi jagah pe daalu, yeh pta lgega aapko ek function ke dwara 
+    So the location to which second element should be mapped depends on a function 
+    Hi(a) = h(a) + Fi(a), where i corresponds to ith attempt 
+
+    2.1 Linear Probing 
+        In case of Linear probing, f(i)=i 
+
+        First "kartik" & "kartki" request to be placed at 7th index 
+        0th attempt : Place "kartik" at 7th index 
+        "kartik" is already placed at 7th index, then we go for 1st attempt 
+        1st attempt : f(1)=1, Hi(a) = 7+1 = 8th index
+        Let's say something is placed at 8th index, then we go for 2nd attempt 
+        2nd attempt : f(2)=2, Hi(a) = 7+2 = 9th index 
+    2.2 Quadratic Probing 
+        In case of Linear probing, f(i)=i^2
+
+        First "kartik" & "kartki" request to be placed at 7th index 
+        0th attempt : Place "kartik" at 7th index 
+        "kartik" is already placed at 7th index, then we go for 1st attempt 
+        1st attempt : f(1)=1, Hi(a) = 7+1 = 8th index
+        Let's say something is placed at 8th index, then we go for 2nd attempt 
+        2nd attempt : f(2)=4, Hi(a) = 7+4 = 11th index
+
+    This way you can even create your own f(i) 
+    But remember in reality "Separate chaining" works well enough!
+
+
+COMPLEXITY ANALYSIS 

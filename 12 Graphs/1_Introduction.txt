@@ -48,3 +48,57 @@ i/p -> (no. of nodes, no. of edges & edges list)
     Since 2nd entity mei bhot saare neighbours aa skte hain, toh voh ek list hogi & 1st entity is single object
     It can be implemented using map 
     Eg : 0 -> 1, 4 can be implemented as map< int , list<int> >;
+
+
+DISCONNECTED GRAPH 
+Graph having 2 or more components out of which atleast 1 set is disconnected 
+  0
+  |\
+  | 3    2
+  |/
+  1
+
+BFS TRAVERSAL (BREADTH FIRST SEARCH)
+In this traversal algorithm, 1 node is selected & then, all of the adjacent nodes are visited one by one.
+
+  0
+    \
+     \
+  4---2           print -> 0, 1, 2, 3, 4
+   \ /
+    3
+
+  0
+  | \
+  \  \
+   \  3 --- 1       print -> 0, 2, 3, 4, 1
+    \       |
+      2 --- 4
+
+Implementation :
+1. Data structure which tracks that whether a particular node is visited or not 
+    unordered_map < node, bool >;
+    All false initialyy no node visited
+2. We need 1 more data structure queue (FIFO) in which i am gonna put all nodes and after pushing each node, 
+    gonna process it's neighbours 
+
+  0 --- 3     2         adjacency list              visited DS (All false initialyy no node visited)
+         \   /          0 -> 3                      0 -> F
+          \ /           1 -> 2, 3, 4                1 -> F
+        4--1            2 -> 1                      2 -> F
+                        3 -> 0, 1                   3 -> F
+                        4 -> 1                      4 -> F
+
+OUTPUT : 0 3 1 2 4
+
+If node isn't visited call BFS function (do this inside loop which goes till n to cover case of disconnected)
+n->no. of nodes, This is done to make sure Disconnected Graph is also covered in such case
+Step-1 : Push sourceNode in queue 
+Step-2 : From queue save entry as firstNode, 
+Step-3 : Remove it from queue
+Step-4 : Mark it True in unordered_map (visited)
+Step-5 : Print it in Answer
+Step-6 : Push all neighbours of firstNode in queue (Make sure you can't push neighbour if it's True)
+Step-7 : Recursively do all steps fromt Step-2 to Step-6
+
+Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges

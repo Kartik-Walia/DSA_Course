@@ -20,8 +20,8 @@ void addEdge(int u, int v, bool direction) {
 }
 
 void printAdjList() {
-    for(auto i:adj) {
-        cout << i.first << "-> ";
+    for(auto i: adj) {
+        cout << i.first << " -> ";
         for(auto j: i.second) {
             cout << j << ", ";
         }
@@ -76,10 +76,10 @@ INPUT
 4 0
 
 OUTPUT
-4-> 3, 0,
-3-> 2, 1, 4,
-2-> 1, 3,
-1-> 0, 2, 3,
-0-> 1, 4,
+4 -> 3, 0,
+3 -> 2, 1, 4,
+2 -> 1, 3,
+1 -> 0, 2, 3,
+0 -> 1, 4,
 
 */
