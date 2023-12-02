@@ -4,6 +4,8 @@ Edges : for connecting nodes
 Path : Sequence of nodes you're travelling in which each node comes exactly once 
 
 
+
+
 TYPES OF GRAPH 
 1. Undirected Graph 
     Can go from U to V as well as V to U
@@ -16,18 +18,26 @@ TYPES OF GRAPH
     Outdegree : Outdegree of a vertex is given by no. of edges going away from the vertex 
 
 
+
+
 WEIGHTED GRAPH 
 Graphs having wieghts over it's edges 
 1. Weighted Undirected Graph : If no weights given, assume weights as 1 on each edge 
 2. Weighted Directed Graph : If no weights given, assume wieghts as 1 on each edge 
 
 
+
+
 CYCLIC GRAPH 
 If in a graph, you're able to create a path which allow you to reach to an already travelled node again, then such a graph is called Cyclic Graph 
 
 
+
+
 ACYCLIC GRAPH 
 If in a graph, you're unable to create a path which allows you to reach to an already travelled node again, then such a graph is called Acyclic Graph 
+
+
 
 
 GRAPH REPRESENTATION 
@@ -48,6 +58,8 @@ input -> (no. of nodes, no. of edges & edges list)
     Eg : 0 -> 1, 4 can be implemented as map< int , list<int> >;
 
 
+
+
 DISCONNECTED GRAPH 
 Graph having 2 or more components out of which atleast 1 set is disconnected 
   0
@@ -55,6 +67,8 @@ Graph having 2 or more components out of which atleast 1 set is disconnected
   | 3    2
   |/
   1
+
+
 
 
 BFS TRAVERSAL (BREADTH FIRST SEARCH)
@@ -100,6 +114,8 @@ Step-7 : Recursively do all steps fromt Step-2 to Step-6
 Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
 
 
+
+
 DEPTH TRAVERSAL (DEPTH FIRST SEARCH)
 In this traversal algorithm, starting from a node, the algorithm explores as far as possible along each branch before backtracking.
 
@@ -130,6 +146,8 @@ If node isn't visited call DFS function (do this inside loop which goes till n),
 Time & Space Complexity : Linear
 
 
+
+
 CYCLE DETECION IN UNDIRECTED GRAPH VIA BFS
 Let's consider undirected disconnected graph 
   1 -- 2          4 -- 5 -- 6
@@ -156,6 +174,8 @@ In short, it would be completely same as BFS code, just 1 data structure of pare
 Time & Space Complexity (same as BFS) : O(N+E), where N -> no. of vertices & E -> no. of edges
 
 
+
+
 CYCLE DETECION IN UNDIRECTED GRAPH VIA DFS
 Let's consider undirected disconnected graph 
   1 -- 2          4 -- 5 -- 6
@@ -169,3 +189,50 @@ Implementation :
 If you find a case when neighbour of firstNode is True but it's not parent of firstNode, Cycle is detected
 
 In short, it would be completely same as DFS code, just 1 data structure of parent would be added along with the if condition talked above 
+
+
+
+CYCLE DETECTION IN DIRECTED GRAPH VIA DFS 
+Adjacency List 
+  1 -> 2
+  2 -> 3, 4
+  3 -> 7, 8
+  4 -> 5                  Yes, cycle detected (4 5 6)
+  5 -> 6
+  6 -> 4
+  7 -> 
+  8 -> 7
+It would be similar to the case for undirected, but we would need 1 more data structure (array or map) dfsVisited, which keeps track of which nodes have been called, returned call or haven't been called, along with this we need 1 more if condition 
+If a node has been called, it's dfsVisited would be 1
+If a node returned calle, it's dfsVisited would be 0 again
+
+If for a node, neighbour is visited & also it's dfsVisited is true, then cycle is present in directed graph 
+
+
+
+
+TOPOLOGICAL SORT
+It can be only applied to DAG (Directed Acyclic Graph)
+
+Topological sort is a linear ordering of vertices such that for every directed edge from vertex 'u' to 'v', vertex 'u' comes before 'v' in the ordering. Topological sort is not possible if graph is not a DAG
+Multiple ordering can exist which satisfies above condition
+
+Example
+  Adjacency List
+  0 -> 1, 3
+  1 -> 2                      0 1 3 2 -> Valid TS 
+  2 ->                        3 2 1 0 -> Invalid TS (0 should come before 1 in TS)
+  3 -> 2
+
+Why we cannot apply TS on directed cyclic graph ?
+  Adjacency List
+  1 -> 2
+  2 -> 3
+  3 -> 1
+Now if you check 1 should appear before 2, 2 should appear before 3 and 3 should appear before 2 in linear ordering 
+All 3 condiitons cannot be satisfied simultaneously, hence we cannot apply TS to an directed cyclic graph
+
+This can be used in cycle detection of directed graph also, as if we are unavble to find topological sort of a directed graph, then the graph would contain a cycle 
+
+
+TOPOLOGICAL SORT USING DFS 
