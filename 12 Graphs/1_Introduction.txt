@@ -23,17 +23,15 @@ Graphs having wieghts over it's edges
 
 
 CYCLIC GRAPH 
-If in a graph, you're able to create a path which allow you to reach to an already travelled node again, 
-then such a graph is called Cyclic Graph 
+If in a graph, you're able to create a path which allow you to reach to an already travelled node again, then such a graph is called Cyclic Graph 
 
 
 ACYCLIC GRAPH 
-If in a graph, you're unable to create a path which allows you to reach to an already travelled node again, 
-then such a graph is called Acyclic Graph 
+If in a graph, you're unable to create a path which allows you to reach to an already travelled node again, then such a graph is called Acyclic Graph 
 
 
 GRAPH REPRESENTATION 
-i/p -> (no. of nodes, no. of edges & edges list)
+input -> (no. of nodes, no. of edges & edges list)
 1. Adjacency Matrix 
     Create a 2D adjacency matrix 
     Where index represents nodes 
@@ -43,7 +41,7 @@ i/p -> (no. of nodes, no. of edges & edges list)
     Space Compexity : O(n^2), where n represents no. of nodes 
     Do this using 2 for loops
 2. Adjacency List 
-    List Nodes -> tell what connection are available 
+    List Nodes -> tells what connection are available 
     Ek entity ke corresponding uske saare neighbours hain 
     Since 2nd entity mei bhot saare neighbours aa skte hain, toh voh ek list hogi & 1st entity is single object
     It can be implemented using map 
@@ -58,13 +56,14 @@ Graph having 2 or more components out of which atleast 1 set is disconnected
   |/
   1
 
+
 BFS TRAVERSAL (BREADTH FIRST SEARCH)
 In this traversal algorithm, 1 node is selected & then, all of the adjacent nodes are visited one by one.
 
   0
     \
      \
-  4---2           print -> 0, 1, 2, 3, 4
+  4---2           print -> 0, 2, 3, 4
    \ /
     3
 
@@ -76,13 +75,11 @@ In this traversal algorithm, 1 node is selected & then, all of the adjacent node
       2 --- 4
 
 Implementation :
-1. Data structure which tracks that whether a particular node is visited or not 
+1. Data structure which tracks that whether a particular node is visited or not, all false initially no node visited
     unordered_map < node, bool >;
-    All false initialyy no node visited
-2. We need 1 more data structure queue (FIFO) in which i am gonna put all nodes and after pushing each node, 
-    gonna process it's neighbours 
+2. We need 1 more data structure queue (FIFO) in which i am gonna put all nodes and after pushing each node, gonna process it's neighbours 
 
-  0 --- 3     2         adjacency list              visited DS (All false initialyy no node visited)
+  0 --- 3     2         adjacency list              visited DS (All false initially no node visited)
          \   /          0 -> 3                      0 -> F
           \ /           1 -> 2, 3, 4                1 -> F
         4--1            2 -> 1                      2 -> F
@@ -91,8 +88,7 @@ Implementation :
 
 OUTPUT : 0 3 1 2 4
 
-If node isn't visited call BFS function (do this inside loop which goes till n to cover case of disconnected)
-n->no. of nodes, This is done to make sure Disconnected Graph is also covered in such case
+If node isn't visited call BFS function (do this inside loop which goes till n), this is done to make sure Disconnected Graph is also covered
 Step-1 : Push sourceNode in queue 
 Step-2 : From queue save entry as firstNode, 
 Step-3 : Remove it from queue
@@ -102,3 +98,33 @@ Step-6 : Push all neighbours of firstNode in queue (Make sure you can't push nei
 Step-7 : Recursively do all steps fromt Step-2 to Step-6
 
 Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
+
+
+DEPTH TRAVERSAL (DEPTH FIRST SEARCH)
+In this traversal algorithm, starting from a node, the algorithm explores as far as possible along each branch before backtracking.
+
+  0 --- 4 --- 2
+        |     |
+        1     |       print -> 0, 4, 2, 3, 5, 1
+        |     |
+        5 --- 3
+
+Implementation :
+1. Data structure which tracks that whether a particular node is visited or not, all false initially no node visited
+    unordered_map < node, bool >;
+
+  0 --- 2 --- 1         adjacency list              visited DS (All false initially no node visited)
+        |     |         0 -> 2                      0 -> F
+        |     |         1 -> 2, 3                   1 -> F
+        4 --- 3         2 -> 0, 1, 4                2 -> F
+                        3 -> 1, 4                   3 -> F
+                        4 -> 2, 3                   4 -> F
+
+print -> 0, 2, 1, 3, 4
+
+dfs(0) -> dfs(2) -> dfs(1) -> dfs(3) -> dfs(4) now backtracking goes on  until we reach dfs(0)
+print -> 0, 2, 1, 3, 4
+
+If node isn't visited call DFS function (do this inside loop which goes till n), this is done to make sure Disconnected Graph is also covered
+
+Time & Space Complexity : Linear

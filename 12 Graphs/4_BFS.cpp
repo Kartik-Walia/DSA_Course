@@ -4,10 +4,8 @@
 #include <queue>
 using namespace std;
 
-void prepareAdjList(unordered_map<int, list<int> > &adjList, vector<pair<int, int> > edges)
-{
-    for (int i = 0; i < edges.size(); i++)
-    {
+void prepareAdjList(unordered_map<int, list<int> > &adjList, vector<pair<int, int> > edges) {
+    for (int i = 0; i < edges.size(); i++) {
         int u = edges[i].first;
         int v = edges[i].second;
 
@@ -16,28 +14,23 @@ void prepareAdjList(unordered_map<int, list<int> > &adjList, vector<pair<int, in
     }
 }
 
-void printAdjList(unordered_map<int, list<int> > &adjList)
-{
-    for (auto i : adjList)
-    {
+void printAdjList(unordered_map<int, list<int> > &adjList) {
+    for (auto i : adjList) {
         cout << i.first << " -> ";
-        for (auto j : i.second)
-        {
+        for (auto j : i.second) {
             cout << j << ", ";
         }
         cout << endl;
     }
 }
 
-void bfs(unordered_map<int, list<int> > &adjList, unordered_map<int, bool> &visited, vector<int> &ans, int sourceNode)
-{
+void bfs(unordered_map<int, list<int> > &adjList, unordered_map<int, bool> &visited, vector<int> &ans, int sourceNode) {
     queue<int> q;
 
     q.push(sourceNode);
     visited[sourceNode] = 1;
 
-    while (!q.empty())
-    {
+    while (!q.empty()) {
         int frontNode = q.front();
         q.pop();
 
@@ -45,10 +38,8 @@ void bfs(unordered_map<int, list<int> > &adjList, unordered_map<int, bool> &visi
         ans.push_back(frontNode);
 
         // Traverse all neighbours of front node
-        for (auto i : adjList[frontNode])
-        {
-            if (!visited[i])
-            {
+        for (auto i : adjList[frontNode]) {
+            if (!visited[i]) {
                 q.push(i);
                 visited[i] = 1;
             }
@@ -56,8 +47,7 @@ void bfs(unordered_map<int, list<int> > &adjList, unordered_map<int, bool> &visi
     }
 }
 
-vector<int> BFS(int vertex, vector<pair<int, int> > edges)
-{
+vector<int> BFS(int vertex, vector<pair<int, int> > edges) {
     unordered_map<int, list<int> > adjList;
     vector<int> ans;
     unordered_map<int, bool> visited;
@@ -68,10 +58,8 @@ vector<int> BFS(int vertex, vector<pair<int, int> > edges)
     printAdjList(adjList);
 
     // Traverse all components of a graph (including case for disconnected graph)
-    for (int i = 0; i < vertex; i++)
-    {
-        if (!visited[i])
-        {
+    for (int i = 0; i < vertex; i++) {
+        if (!visited[i]) {
             bfs(adjList, visited, ans, i);
         }
     }
@@ -79,20 +67,18 @@ vector<int> BFS(int vertex, vector<pair<int, int> > edges)
     return ans;
 }
 
-int main()
-{
-    int vertices,edge;
+int main() {
+    int vertex, edge;
     vector<pair<int, int> > edges;
 
     cout << "Enter the number of vertices: ";
-    cin >> vertices;
+    cin >> vertex;
     cout << "Enter the number of edges: ";
     cin >> edge;
 
     cout << "Enter the edges (pair of vertices) separated by space:\n";
     int i=0;
-    while (i<edge)
-    {
+    while (i<edge) {
         int u, v;
         cin >> u >> v;
 
@@ -101,11 +87,10 @@ int main()
         i++;
     }
 
-    vector<int> result = BFS(vertices, edges);
+    vector<int> result = BFS(vertex, edges);
 
     cout << "BFS traversal: ";
-    for (int vertex : result)
-    {
+    for (int vertex : result) {
         cout << vertex << " ";
     }
     cout << endl;
@@ -114,5 +99,4 @@ int main()
 }
 
 
-// If you want the answer in sorted form, use set instead of list in unordered_map & 
-// replace push_back function with insert 
+// If you want the answer in sorted form, use set instead of list in unordered_map & replace push_back function with insert 

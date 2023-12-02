@@ -20,6 +20,7 @@ void addEdge(int u, int v, bool direction) {
 }
 
 void printAdjList() {
+    // i.first is the key (vertex) and i.second is the associated list of neighbours
     for(auto i: adj) {
         cout << i.first << " -> ";
         for(auto j: i.second) {

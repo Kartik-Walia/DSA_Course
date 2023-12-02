@@ -68,7 +68,7 @@ void reverseLevelOrderTraversal(Node *root){
         if(temp == NULL){
             cout << endl;
         } else {
-        cout << temp->data << " ";
+            cout << temp->data << " ";
         }
     }
     cout << endl;
