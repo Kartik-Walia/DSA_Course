@@ -90,7 +90,7 @@ OUTPUT : 0 3 1 2 4
 
 If node isn't visited call BFS function (do this inside loop which goes till n), this is done to make sure Disconnected Graph is also covered
 Step-1 : Push sourceNode in queue 
-Step-2 : From queue save entry as firstNode, 
+Step-2 : From queue save entry as firstNode
 Step-3 : Remove it from queue
 Step-4 : Mark it True in unordered_map (visited)
 Step-5 : Print it in Answer
@@ -128,3 +128,29 @@ print -> 0, 2, 1, 3, 4
 If node isn't visited call DFS function (do this inside loop which goes till n), this is done to make sure Disconnected Graph is also covered
 
 Time & Space Complexity : Linear
+
+
+CYCLE DETECION IN UNDIRECTED GRAPH VIA BFS
+Let's consider undirected disconnected graph 
+  1 -- 2          4 -- 5 -- 6
+       |               |    |                 Yes, cycle detected
+       3               7 -- 8 -- 9
+
+Implementation :
+1. Data structure which tracks that whether a particular node is visited or not, all false initially no node visited
+    unordered_map < node, bool >;
+2. We need 1 more data structure queue (FIFO) in which i am gonna put all nodes and after pushing each node, gonna process it's neighbours 
+3. 1 data structure for parent in form x->y i.e. y is parent of x
+4. Adjacency list 
+
+Step-1 : Push sourceNode in queue 
+Step-2 : From queue save entry as firstNode 
+Step-3 : Remove it from queue
+Step-4 : Mark it True in unordered_map (visited)
+Step-5 : Push all neighbours of firstNode in queue (Make sure you can't push neighbour if it's True && it's parent of firstNode)
+Step-6 : Recursively do all steps fromt Step-2 to Step-6
+Step-7 : If you find a case when neighbour of firstNode is True but it's not parent of firstNode, Cycle is detected
+
+In short, it would be completely same as BFS code, just 1 data structure of parent would be added along with the if condition talked above 
+
+Time & Space Complexity (same as BFS) : O(N+E), where N -> no. of vertices & E -> no. of edges
