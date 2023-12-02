@@ -154,3 +154,18 @@ Step-7 : If you find a case when neighbour of firstNode is True but it's not par
 In short, it would be completely same as BFS code, just 1 data structure of parent would be added along with the if condition talked above 
 
 Time & Space Complexity (same as BFS) : O(N+E), where N -> no. of vertices & E -> no. of edges
+
+
+CYCLE DETECION IN UNDIRECTED GRAPH VIA DFS
+Let's consider undirected disconnected graph 
+  1 -- 2          4 -- 5 -- 6
+       |               |    |                 Yes, cycle detected
+       3               7 -- 8 -- 9
+
+Implementation :
+1. Data structure which tracks that whether a particular node is visited or not, all false initially no node visited
+    unordered_map < node, bool >;
+
+If you find a case when neighbour of firstNode is True but it's not parent of firstNode, Cycle is detected
+
+In short, it would be completely same as DFS code, just 1 data structure of parent would be added along with the if condition talked above 
