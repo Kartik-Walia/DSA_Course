@@ -193,11 +193,6 @@ In short, it would be completely same as DFS code, just 1 data structure of pare
 
 
 
-CYCLE DETECTION IN DIRECTED GRAPH VIA BFS 
-
-
-
-
 CYCLE DETECTION IN DIRECTED GRAPH VIA DFS 
 Adjacency List 
   1 -> 2
