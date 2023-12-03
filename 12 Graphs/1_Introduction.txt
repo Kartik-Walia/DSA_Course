@@ -1,4 +1,4 @@
-Graph is a type of a data structure which is combination of nodes and edges
+Graph is a type of a non-linear data structure which is combination of nodes and edges
 Node : entity to store data
 Edges : for connecting nodes 
 Path : Sequence of nodes you're travelling in which each node comes exactly once 
@@ -29,13 +29,13 @@ Graphs having wieghts over it's edges
 
 
 CYCLIC GRAPH 
-If in a graph, you're able to create a path which allow you to reach to an already travelled node again, then such a graph is called Cyclic Graph 
+If in graph, you're able to create a path which allow you to reach to an already travelled node again, then such graph is called Cyclic Graph 
 
 
 
 
 ACYCLIC GRAPH 
-If in a graph, you're unable to create a path which allows you to reach to an already travelled node again, then such a graph is called Acyclic Graph 
+If in graph, you're unable to create a path which allows you to reach to an already travelled node again, then such graph is called Acyclic Graph 
 
 
 
@@ -108,7 +108,7 @@ Step-2 : From queue save entry as firstNode
 Step-3 : Remove it from queue
 Step-4 : Mark it True in unordered_map (visited)
 Step-5 : Print it in Answer
-Step-6 : Push all neighbours of firstNode in queue (Make sure you can't push neighbour if it's True)
+Step-6 : Push all neighbours of firstNode in queue & mark them visited (Make sure you can't push neighbour if it's True)
 Step-7 : Recursively do all steps fromt Step-2 to Step-6
 
 Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
@@ -192,6 +192,12 @@ In short, it would be completely same as DFS code, just 1 data structure of pare
 
 
 
+
+CYCLE DETECTION IN DIRECTED GRAPH VIA BFS 
+
+
+
+
 CYCLE DETECTION IN DIRECTED GRAPH VIA DFS 
 Adjacency List 
   1 -> 2
@@ -204,7 +210,7 @@ Adjacency List
   8 -> 7
 It would be similar to the case for undirected, but we would need 1 more data structure (array or map) dfsVisited, which keeps track of which nodes have been called, returned call or haven't been called, along with this we need 1 more if condition 
 If a node has been called, it's dfsVisited would be 1
-If a node returned calle, it's dfsVisited would be 0 again
+If a node returned call, it's dfsVisited would be 0 again
 
 If for a node, neighbour is visited & also it's dfsVisited is true, then cycle is present in directed graph 
 

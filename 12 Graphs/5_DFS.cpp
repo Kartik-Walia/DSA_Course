@@ -24,20 +24,20 @@ void printAdjList(unordered_map<int, list<int> > &adjList) {
     }
 }
 
-void dfs(unordered_map<int, list<int> > &adjList, unordered_map<int, bool> &visited, vector<int> &component, int sourceNode) {
+void dfs(unordered_map<int, list<int> > &adjList, unordered_map<int, bool> &visited, vector<int> &componentAns, int sourceNode) {
     // Store in answer 
-    component.push_back(sourceNode);
-    visited[sourceNode] = true;
+    componentAns.push_back(sourceNode);
+    visited[sourceNode] = 1;
 
     // Har connected node ke liye recursive call 
     for(auto i: adjList[sourceNode]) {
         if(!visited[i]) {
-            dfs(adjList, visited, component, i);
+            dfs(adjList, visited, componentAns, i);
         }
     }
 }
 
-vector<vector<int> > DFS(int V, int E, vector<vector<int> > &edges) {
+vector<vector<int> > DFS(int V, vector<vector<int> > &edges) {
     unordered_map<int, list<int> > adjList;
     vector<vector<int> > ans;
     unordered_map<int, bool> visited;
@@ -50,9 +50,9 @@ vector<vector<int> > DFS(int V, int E, vector<vector<int> > &edges) {
     // For all nodes call DFS if not visited 
     for (int i = 0; i < V; i++) {
         if (!visited[i]) {
-            vector<int> component;
-            dfs(adjList, visited, component, i);
-            ans.push_back(component);
+            vector<int> componentAns;
+            dfs(adjList, visited, componentAns, i);
+            ans.push_back(componentAns);
         }
     }
 
@@ -60,33 +60,28 @@ vector<vector<int> > DFS(int V, int E, vector<vector<int> > &edges) {
 }
 
 int main() {
-    int vertices, edgesCount;
+    int V, E;
 
     cout << "Enter the number of vertices: ";
-    cin >> vertices;
+    cin >> V;
 
     cout << "Enter the number of edges: ";
-    cin >> edgesCount;
+    cin >> E;
 
     vector<vector<int> > edges;
 
     cout << "Enter the edges (pair of vertices) separated by space:\n";
-    for (int i = 0; i < edgesCount; i++) {
+    for (int i = 0; i < E; i++) {
         int u, v;
         cin >> u >> v;
 
-        edges.push_back(vector<int>());
-        edges.back().push_back(u);
-        edges.back().push_back(v);
-
-        // or:
-        // std::vector<int> temp;
-        // temp.push_back(u);
-        // temp.push_back(v);
-        // edges.push_back(temp);
+        vector<int> temp;
+        temp.push_back(u);
+        temp.push_back(v);
+        edges.push_back(temp);
     }
 
-    vector<vector<int> > result = DFS(vertices, edgesCount, edges);
+    vector<vector<int> > result = DFS(V, edges);
 
     // Result is a vector of vectors where each inner vector represents a connected component in the graph. The total number of connected components in the graph is given by the size of the result vector, which can be obtained using the result.size() function.
     cout << "Number of connected components: " << result.size() << endl;
@@ -95,7 +90,7 @@ int main() {
     int componentCount = 0;
     for (const auto &component : result) {
         cout << "Component " << ++componentCount << ": ";
-        for (int vertex : component) {
+        for (auto vertex : component) {
             cout << vertex << " ";
         }
         cout << endl;

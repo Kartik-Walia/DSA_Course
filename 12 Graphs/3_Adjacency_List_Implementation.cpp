@@ -33,17 +33,17 @@ void printAdjList() {
 
 
 int main(){
-    int n;
-    cout << "Enter the number of nodes" << endl;
-    cin >> n;
+    int V;
+    cout << "Enter the number of nodes (or vertices)" << endl;
+    cin >> V;
 
-    int e;
+    int E;
     cout << "Enter the number of edges" << endl;
-    cin >> e;
+    cin >> E;
 
     graph g;
 
-    for (int i=0; i<e; i++) {
+    for (int i=0; i<E; i++) {
         int u, v;
         cin >> u >> v;
         // Creating an undirected graph 

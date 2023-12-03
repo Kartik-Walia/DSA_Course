@@ -47,7 +47,7 @@ void bfs(unordered_map<int, list<int> > &adjList, unordered_map<int, bool> &visi
     }
 }
 
-vector<int> BFS(int vertex, vector<pair<int, int> > edges) {
+vector<int> BFS(int V, vector<pair<int, int> > edges) {
     unordered_map<int, list<int> > adjList;
     vector<int> ans;
     unordered_map<int, bool> visited;
@@ -58,7 +58,7 @@ vector<int> BFS(int vertex, vector<pair<int, int> > edges) {
     printAdjList(adjList);
 
     // Traverse all components of a graph (including case for disconnected graph)
-    for (int i = 0; i < vertex; i++) {
+    for (int i = 0; i < V; i++) {
         if (!visited[i]) {
             bfs(adjList, visited, ans, i);
         }
@@ -68,17 +68,17 @@ vector<int> BFS(int vertex, vector<pair<int, int> > edges) {
 }
 
 int main() {
-    int vertex, edge;
+    int V, E;
     vector<pair<int, int> > edges;
 
     cout << "Enter the number of vertices: ";
-    cin >> vertex;
+    cin >> V;
     cout << "Enter the number of edges: ";
-    cin >> edge;
+    cin >> E;
 
     cout << "Enter the edges (pair of vertices) separated by space:\n";
     int i=0;
-    while (i<edge) {
+    while (i<E) {
         int u, v;
         cin >> u >> v;
 
@@ -87,7 +87,7 @@ int main() {
         i++;
     }
 
-    vector<int> result = BFS(vertex, edges);
+    vector<int> result = BFS(V, edges);
 
     cout << "BFS traversal: ";
     for (int vertex : result) {
