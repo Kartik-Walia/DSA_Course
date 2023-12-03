@@ -5,13 +5,13 @@
 #include <vector>
 using namespace std;
 
-bool checkCycleDFS(int node, unordered_map<int, bool> &visited, unordered_map<int, bool> &dfsVisited, unordered_map<int, list<int> > &adj) {
-    visited[node] = true;
-    dfsVisited[node] = true;
+bool checkCycleDFS(unordered_map<int, list<int>> &adj, unordered_map<int, bool> &visited, unordered_map<int, bool> &dfsVisited, int src) {
+    visited[src] = true;
+    dfsVisited[src] = true;
 
-    for (auto neighbour : adj[node]) {
+    for (auto neighbour : adj[src]) {
         if (!visited[neighbour]) {
-            bool cycleDetected = checkCycleDFS(neighbour, visited, dfsVisited, adj);
+            bool cycleDetected = checkCycleDFS(adj, visited, dfsVisited, neighbour);
             if (cycleDetected) {
                 return true;
             }
@@ -22,13 +22,16 @@ bool checkCycleDFS(int node, unordered_map<int, bool> &visited, unordered_map<in
         }
     }
 
-    dfsVisited[node] = false; // On returning the call, mark the node as False
+    dfsVisited[src] = false; // On returning the call, mark the node as False
     return false;
 }
 
-bool detectCycleInDirectedGraph(int n, vector<pair<int, int> > &edges) {
-    // Create adjacency list
+bool detectCycleInDirectedGraph(int V, vector<pair<int, int> > &edges) {
     unordered_map<int, list<int> > adj;
+    unordered_map<int, bool> visited;
+    unordered_map<int, bool> dfsVisited;
+
+    // Preparing adjacency list
     for (int i = 0; i < edges.size(); i++) {
         int u = edges[i].first;
         int v = edges[i].second;
@@ -37,11 +40,9 @@ bool detectCycleInDirectedGraph(int n, vector<pair<int, int> > &edges) {
     }
 
     // Call DFS for all components
-    unordered_map<int, bool> visited;
-    unordered_map<int, bool> dfsVisited;
-    for (int i = 0; i <= n; i++) {
+    for (int i = 0; i < V; i++) {
         if (!visited[i]) {
-            bool cycleFound = checkCycleDFS(i, visited, dfsVisited, adj);
+            bool cycleFound = checkCycleDFS(adj, visited, dfsVisited, i);
             if (cycleFound) {
                 return true;
             }
@@ -51,25 +52,25 @@ bool detectCycleInDirectedGraph(int n, vector<pair<int, int> > &edges) {
 }
 
 int main() {
-    int vertices, edgesCount;
+    int V, E;
 
     cout << "Enter the number of vertices: ";
-    cin >> vertices;
+    cin >> V;
 
     cout << "Enter the number of edges: ";
-    cin >> edgesCount;
+    cin >> E;
 
     vector<pair<int, int> > edges;
 
     cout << "Enter the edges (pair of vertices) separated by space:\n";
-    for (int i = 0; i < edgesCount; i++) {
+    for (int i = 0; i < E; i++) {
         int u, v;
         cin >> u >> v;
 
         edges.push_back(make_pair(u, v));
     }
 
-    bool hasCycle = detectCycleInDirectedGraph(vertices, edges);
+    bool hasCycle = detectCycleInDirectedGraph(V, edges);
 
     if (hasCycle) {
         cout << "Cycle detected in the directed graph." << endl;
