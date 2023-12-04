@@ -356,3 +356,83 @@ Step-5 : Parent array is your final answer
 Time Complexity : O(n^2)
 If i use min heap, then i can get minimum value in O(1) time. We can do so by replacing above loop with priority queue 
 In such case, time complexity would had been better i.e. O(nlogn)
+
+DISJOINT SET 
+It's a type of data structure used in Implementation of Kruskal's algorithm (Union by Rank & Path Compression)
+It can be used to find out whether 2 nodes belong to the same commponent or not
+
+It has 2 important operations :
+1. findParent() or findSet()
+2. Union() or UnionSet()
+
+Understanding operations :
+Let's say we have 5 disconnected components 1, 2, 3, 4, 5 and each component is it's own parent 
+So, findParent operation on any component would currently give the same component as the result like findParent(1) -> 1
+Let's say i told you to do Union(1,2), then you create a single component in which both nodes 1 & 2 are present & let's say u made 1 as parent of this component [1 2]
+Do Union(4,5), then create 1 more component in which you put 4 & 5, and let's say u made 4 as parent of this component [4 5]
+Do Union(3,5), then you saw that 5 is present in it's own component with 4 [4 5], so you put 3, 4 and 5 in one component and let's say u made 4 as parent of this whole component [4 5 3]
+Do Union(1,3), you saw 1 is in it's own component [1 2] & 3 is in it's own component [3 4 5], so you put them in a single component and let's say u made 1 as parent of while component [1 2 3 4 5], now entire nodes are in single component 
+This is just basic implementation 
+You can do it's effective implementation using Union by Rank & Path Compression 
+
+Now, let's talk about Union by Rank & Path Compression :
+Let's say you have 7 disconnected components 1, 2, 3, 4, 5, 6, 7 and each component is it's own parent, so findParent(x) -> x
+For union, firstly you need to make array of Rank from index 0 to 7 (bcoz we aren't gonna look for 0 as our components starts from 1)
+Initially, Ranks of each component is 0
+
+For doing Union, 1st find parents of both components, then look out at their ranks 
+If ranks of both components is same, then you can attach in any way i.e. any one component can be the parent of the other component & make sure you increment the rank of the parent component
+If ranks of both components is different, then you attach in a way that higher ranked component is the parent of lower ranked component, this is done in thsi way bcoz we always merge short tree in a bigger tree not vice-a-versa (To prevent unnecessary increase of depth)
+
+Union(1,2)
+1 -> 1 Rank = 0
+2 -> 2 Rank = 0
+Since, rank[1] = rank[2], so you can make anyone as parent
+Let's say you made 1 as parent, so you need to increment rank of parent
+parent[2] = 1, rank[1]++                                                        rank[1] = 1
+2 -> 1
+
+Union(2,3)
+2 -> 1 Rank = 1
+3 -> 3 Rank = 0
+Since, rank[3] < rank[1], so set 1 as parent 
+parent[3] = 1
+(2 & 3) -> 1
+
+Union(4,5)
+4 -> 4 Rank = 0
+5 -> 5 Rank = 0
+Since, rank[4] = rank[5], so you can make anyone as parent
+Let's say you made 4 as parent, so you need to increment rank of parent
+parent[5] = 4, rank[4]++                                                        rank[4] = 1
+5 -> 4
+
+Union(6,7)
+6 -> 6 Rank = 0
+7 -> 7 Rank = 0
+Since, rank[6] = rank[7], so you can make anyone as parent
+Let's say you made 6 as parent, so you need to increment rank of parent
+parent[7] = 6, rank[6]++                                                        rank[6] = 1
+7 -> 6
+
+Union(5,6)
+5 -> 4 Rank = 1
+6 -> 6 Rank = 1
+Since, rank[6] = rank[4], so you can make anyone as parent
+Let's say you made 4 as parent, so you need to increment rank of parent
+parent[6] = 4, rank[4]++                                                        rank[4] = 2
+We know 7 -> 6, so now (7 -> 6) -> 4 <- 5
+
+Union(3,7)
+3 -> 1 Rank = 1
+7 -> 4 Rank = 2         (Parent means the end parent 7 -> 6 -> 4, so end parent fo 7 is 4)
+Since, rank[1] < rank[4], so set 4 as parent 
+parent[1] = 4
+We know, (2 & 3) -> 1, so now ((2 & 3) -> 1) -> 4 <- (6 <- 7)
+                                                ^
+                                                |
+                                                5
+
+Let's say 1 more node would be there 8 -> 7, then when you were asked what's the parent of 8 you would go through first 7 then 6 then say 4
+This will lead to consuming more time, so here logic of Path Compression comes that as soon as you detected in previous call that 4 is parent of 7, then instead of going through 6, attach 7 directly to 4
+Now when you will be asked for parent of 7, you woudnt go through 6 then say 4, rather you would directly say 4 
