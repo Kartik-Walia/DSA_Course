@@ -1,0 +1,12 @@
+WHAT IS BINARY SEARCH TREE ?
+A Binary Search Tree (BST) is a specific type of binary tree where a particular rule is followed that for each node in the tree, the values in its left subtree are always smaller, and the values in its right subtree are always greater.
+
+
+
+
+INSERTION OF NODE IN BST 
+If key < root->data, go to the right subtree and insert
+If key < root->data, go to the left subtree and insert
+Rest recursion will handle
+
+Time Complexity : O(logn) similar to binary search 
