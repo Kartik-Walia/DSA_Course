@@ -436,3 +436,7 @@ We know, (2 & 3) -> 1, so now ((2 & 3) -> 1) -> 4 <- (6 <- 7)
 Let's say 1 more node would be there 8 -> 7, then when you were asked what's the parent of 8 you would go through first 7 then 6 then say 4
 This will lead to consuming more time, so here logic of Path Compression comes that as soon as you detected in previous call that 4 is parent of 7, then instead of going through 6, attach 7 directly to 4
 Now when you will be asked for parent of 7, you woudnt go through 6 then say 4, rather you would directly say 4 
+
+If you were asked that whether 2 nodes lie in same component or not, then simply check their parents 
+If parents of both are different, then nodes are part of different components 
+If parents of both are same, then nodes are part of same component
