@@ -440,3 +440,43 @@ Now when you will be asked for parent of 7, you woudnt go through 6 then say 4, 
 If you were asked that whether 2 nodes lie in same component or not, then simply check their parents 
 If parents of both are different, then nodes are part of different components 
 If parents of both are same, then nodes are part of same component
+
+
+KRUSKAL'S ALGORITHM FOR MST 
+No need of Adjacency List here 
+Rather we need a linear data structure, in which we are gonna store u, v & weight and we even need to sort the list on basis of weights
+Considering the edges & weights as below
+1--2  2
+1--4  1
+1--5  4
+4--5  9
+4--3  5
+2--4  3
+2--3  3
+2--6  7
+3--6  8
+Sorted list would be like (wt, u, v) 
+1  1  4
+2  1  2
+3  2  3
+3  2  4
+4  1  5
+5  3  4
+7  2  6
+8  3  6
+9  4  5
+We're gonna process edges with shortest weights first
+Step-1 : Find parents of both 
+Step-2 : If parents of both are different, then peform Union/merge nbut if parents comes same, then ignore(do nothing)
+Step-3 : Repeat Step-1 & Step-2 for edges with further weights in increasing order (find from Sorted list)
+MST would be as below 
+      4     3
+    1 |   3 |
+      |     |
+5 --- 1 --- 2 --- 6
+   4     2     7
+
+Sorting function time complexity is mlogm, where m is total number of edges 
+Studies tell that time complexity of findParent function & unionSet function is constant
+Hence, the overall time complexity would be O(mlogm), where m is total number of edges
+Space Complexity : O(n) i,e, Linear Space Complexity
