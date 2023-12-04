@@ -51,3 +51,22 @@ Step-3 : return temp
 
 
 HOW TO CALCULATE INORDER PREDECESSOR AND INORDER SUCCESOR ? (HOMEWORK)
+
+
+
+
+DELETION OF A NODE IN BST
+If root->data > key, recursive call in left part 
+If root->data < key, recursive call in right part 
+If root->data = key, this condition forms 3 cases 
+Case-1 : Node contains 0 child i.e. it's leaf node 
+delete Node  
+return NULL
+Case-2 : Node contains 1 child either left child or right child exists 
+For left child case, temp = root->left, delete root, return temp 
+For right child case, temp = root->right, delete root, return temp 
+Case-3 : Node contains 2 child 
+Approach-1 -> Find max node from left subtree and replace it with current node, then delete that node you found
+Approach-2 -> Find min node from right subtree and replace it with current node, then delete that node you found
+
+Time Complexity : O(height) in average case & O(n) in worst case (skew tree)
