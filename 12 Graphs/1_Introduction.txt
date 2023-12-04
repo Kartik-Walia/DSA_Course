@@ -215,7 +215,7 @@ If for a node, neighbour is visited & also it's dfsVisited is true, then cycle i
 TOPOLOGICAL SORT
 It can be only applied to DAG (Directed Acyclic Graph)
 
-Topological sort is a linear ordering of vertices such that for every directed edge from vertex 'u' to 'v', vertex 'u' comes before 'v' in the ordering. Topological sort is not possible if graph is not a DAG
+Topological sort is a linear ordering of vertices such that for every directed edge from vertex 'u' to 'v', vertex 'u' always comes before 'v' in the ordering. Topological sort is not possible if graph is not a DAG
 Multiple ordering can exist which satisfies above condition
 
 Example
@@ -233,7 +233,71 @@ Why we cannot apply TS on directed cyclic graph ?
 Now if you check 1 should appear before 2, 2 should appear before 3 and 3 should appear before 2 in linear ordering 
 All 3 condiitons cannot be satisfied simultaneously, hence we cannot apply TS to an directed cyclic graph
 
-This can be used in cycle detection of directed graph also, as if we are unavble to find topological sort of a directed graph, then the graph would contain a cycle 
+This can be used in cycle detection of directed graph also, as if we are unable to find topological sort of a directed graph, then the graph would contain a cycle 
 
 
 TOPOLOGICAL SORT USING DFS 
+Implementation :
+1 Data structure for visited nodes
+1 Data structure (stack) for 
+1 Data structure for adjacency list
+Whenever you go back from a call (node returns a call), you push that node in the stack 
+
+Adjacency List 
+1 -> 2, 3
+2 -> 4
+3 -> 4
+4 -> 5, 6
+5 -> 6
+6 ->
+
+dfs(1) -> dfs(2) -> dfs(4) -> dfs(5) -> dfs(6)
+then 6 returns call so push 6 into stack 
+then 5 returns call so push 5 into stack (as 6 is visited)
+then 4 returns call so push 4 into stack (as 5, 6 are visited)
+then 2 returns call so push 2 into stack (4 is viisted)
+then dfs(1) -> dfs(3) (as 3 is not visited)
+then 3 returns call so push 3 into stack (4 is visited)
+then 1 returns call so push 1 into stack (2, 3 are visited)
+
+Order in stack(LIFO) from top would be 1, 3, 2, 4, 5, 6 which is a valid topological sort 
+
+Why stack is needed ?
+When we're unable to go further from any recursive function call, means we only have choice to back track, then we're putting that node in stack and stack has property of LIFO. So, in short we've putted such a node in stack which can't be propogated further, we've putted in stack so taht it comes out at last
+
+Time Complexity : O(N+E) which is linear 
+Space Complexity : Linear ( O(N) + O(N) + O(N) )      (visited + stack + recursive)
+
+
+TOPOLOGICAL SORT USING BFS (Kahn's algorithm)
+Adjacency List
+1 -> 2, 3
+2 -> 5
+3 -> 5
+5 -> 4
+
+Implementation :
+1. Make a data structure for storing indegree of each node 
+    |0|1|1|1|2|           -> Indegree
+     1 2 3 4 5            -> Nodes
+
+
+Step-1 : Find indegree of all nodes 
+Step-2 : Make a queue and insert all nodes having indegree 0
+Step-3 : Do BFS with some small changes 
+        a. Get front Node 
+        b. pop from the queue  
+        c. add front Node to the answer
+        d. Get neighbours of front Node (considering above example when 1 is removed indegree of 2 & 3 reduces by 1, so indegree of 2 & 3     will become 0), so we can say when front Node is removed, then indegree of it's neighbours would be reduced by 1
+Step-4 : Repeat Step-2 & Step-3
+
+Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
+
+
+
+
+CYCLE DETECTION IN DIRECTED GRAPH VIA BFS 
+If we're able to find topological sort of directed graph, then it's a directed acyclic graph 
+But if we're unable to find valid topological sort of directed graph, then it must be cyclic graph 
+
+In short, just making minute chnages & reusing Kahn's Algorithm 
