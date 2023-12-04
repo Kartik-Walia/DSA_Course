@@ -303,3 +303,17 @@ But if we're unable to find valid topological sort of directed graph, then it mu
 In short, just making minute chnages & reusing Kahn's Algorithm 
 
 Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
+
+
+
+
+SHORTEST PATH IN UNDIRECTED GRAPH VIA BFS 
+Step-1 : Create a parent data structure using BFS 
+Step-2 : Back Track from Destination node to Source node & store it in answer simultaneously
+Step-3 : Reverse the answer to obtain the final corrected answer 
+
+    2 --- 5
+   /       \
+  1 -- 3 -- 8           Start Node = 1 
+   \       /            Destination Node = 8
+    4 -6- 7             Shortest Path = 1 -> 3 -> 8
