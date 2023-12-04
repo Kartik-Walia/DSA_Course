@@ -10,3 +10,23 @@ If key < root->data, go to the left subtree and insert
 Rest recursion will handle
 
 Time Complexity : O(logn) similar to binary search 
+
+
+
+
+SEARCHING IN BST 
+Base Case: If reach NULL, then return false 
+If root->data > Key, go to left subtree
+If root->data < Key, go to right subtree
+If root->data = Key, return true 
+
+Time Complexity : O(logn) i.e. O(height) in average case & O(n) in worst case (skew tree)
+Space Complexity : O(H), where H is height of the tree in average case & O(n) in worst case (skew tree)
+
+If we write iterative approach, then we can make Space constant 
+
+
+
+
+PROPERTIES OF BST 
+Inorder Traversal of BST is always sorted
