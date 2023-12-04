@@ -1,3 +1,4 @@
+// ======================================= This code is valid when node start from 0 =======================================
 // ======================================= CYCLE DETECION IN DIRECTED GRAPH VIA DFS =======================================
 #include <iostream>
 #include <unordered_map>
@@ -5,7 +6,7 @@
 #include <vector>
 using namespace std;
 
-bool checkCycleDFS(unordered_map<int, list<int>> &adj, unordered_map<int, bool> &visited, unordered_map<int, bool> &dfsVisited, int src) {
+bool checkCycleDFS(unordered_map<int, list<int> > &adj, unordered_map<int, bool> &visited, unordered_map<int, bool> &dfsVisited, int src) {
     visited[src] = true;
     dfsVisited[src] = true;
 
@@ -83,35 +84,35 @@ int main() {
 
 /*
 
-Sample Input 1
+Sample Input 0
 5
 6
-1 2
-4 1
-2 4
-3 4
-5 2
+0 1
+3 0
 1 3
-Sample Output 1
+2 3
+4 1
+0 2
+Sample Output 0
 Cycle detected in the directed graph.
 
 
-Sample Input 2
+Sample Input 1
 5
 4
+0 1
 1 2
 2 3
 3 4
-4 5
-Sample Output 2
+Sample Output 1
 No cycle detected in the directed graph.
 
 
-Sample Input 3
+Sample Input 2
 2
 1 
-1 2
-Sample Output 3
+0 1
+Sample Output 2
 No cycle detected in the directed graph.
 
 */

@@ -301,3 +301,5 @@ If we're able to find topological sort of directed graph, then it's a directed a
 But if we're unable to find valid topological sort of directed graph, then it must be cyclic graph 
 
 In short, just making minute chnages & reusing Kahn's Algorithm 
+
+Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
