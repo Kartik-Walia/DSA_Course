@@ -323,3 +323,31 @@ Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
 
 
 
+SHORTEST PATH IN DIRECTED ACYCLIC GRAPH (DAG)
+
+
+
+
+SPANNING TREE 
+When you convert a graph into a tree such that it contains N nodes and N-1 edges & every node is reachable by any other node, then its known as "Spanning tree"
+
+Conditions for Spanning Tree:
+1. N nodes and N-1 edges
+2. Every node is reachable by any other node 
+
+
+MINIMUM SPANNING TREE (MST)
+Minimum cost of weight 
+
+PRIM'S ALGORITHM FOR MST 
+We need 3 data structures for Key, MST and Parent (Indexing represent the nodes)
+In starting mark keys of al nodes as infinity
+In starting mark all nodes inside MST as False 
+In starting mark parent of all ndoes as -1 
+
+For Source node, mark it's key as 0 & it's parent as -1
+Step-1 : Find out node with minimum key value (minNode) and whose MST is false 
+Step-2 : Mark that node as true in MST 
+Step-3 : Find all adjacent nodes of Source node & update their Key values (if it's current value is less than already present values) & mark their parents as well
+Step-4 : Repeat Step-1 to Step-3 untill all nodes in MST are marked as True
+Step-5 : Parent array is your final answer 
