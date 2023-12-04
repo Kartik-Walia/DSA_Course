@@ -38,15 +38,18 @@ vector<int> shortestPath(vector<pair<int, int> > &edges, int n, int m, int src, 
 
     // Prepare the shortest path
     vector<int> ans;
+    int count = 0;  // To count no. of edges in shortest path
     int currentNode = destinationNode;
     ans.push_back(destinationNode);
 
     while(currentNode != src) {
         currentNode = parent[currentNode];
         ans.push_back(currentNode);
+        count++;
     }
 
-    // Reverse the answer 
+    // Reverse the answer
+    cout << "No. of edges in shortest path: " << count << endl;
     reverse(ans.begin(), ans.end());
     return ans;
 }
@@ -85,6 +88,8 @@ int main(){
         cout << node << " ";
     }
     cout << endl;
+
+    
 
     return 0;
 }
