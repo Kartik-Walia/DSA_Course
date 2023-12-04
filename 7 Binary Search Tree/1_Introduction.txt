@@ -29,4 +29,25 @@ If we write iterative approach, then we can make Space constant
 
 
 PROPERTIES OF BST 
-Inorder Traversal of BST is always sorted
+Inorder Traversal(LNR) of BST is always sorted
+
+
+
+
+MINIMUM/MAXIMUM VALUE IN BST 
+Implemented the code in Insertion.cpp file
+
+Minimum value will be the leftmost node of the BST 
+Step-1 : Make temp = root
+Step-2 : While root != NULL, temp = temp->left 
+Step-3 : return temp
+
+Maximum value will be the rightmost node of the BST 
+Step-1 : Make temp = root
+Step-2 : While root != NULL, temp = temp->right
+Step-3 : return temp
+
+
+
+
+HOW TO CALCULATE INORDER PREDECESSOR AND INORDER SUCCESOR ? (HOMEWORK)

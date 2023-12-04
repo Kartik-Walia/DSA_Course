@@ -94,6 +94,24 @@ Node* insertIntoBST(Node* &root, int d) {
     return root;
 }
 
+Node *minVal(Node *root) {
+    Node *temp = root;
+
+    while(temp->left != NULL) {
+        temp = temp->left;
+    }
+    return temp;
+}
+
+Node *maxVal(Node *root) {
+    Node *temp = root;
+
+    while(temp->right != NULL) {
+        temp = temp->right;
+    }
+    return temp;
+}
+
 void takeInput(Node* &root) {
     int data;
     cin >> data;
@@ -125,6 +143,9 @@ int main() {
     postOrder(root);
     cout << endl;
 
+    cout << "Min value is " << minVal(root)->data << endl;
+    cout << "Max value is " << maxVal(root)->data << endl;
+
     return 0;
 }
 
@@ -137,13 +158,13 @@ Tree :
         /        \
        7          27
       /
-     5 
+     5
     /
-   4 
+   4
   /
- 3 
+ 3
 
-Input : 
+Input :
 10 8 21 7 27 5 4 3 -1
 
 Output :
@@ -161,5 +182,7 @@ Printing pre order traversal of BST
 10 8 7 5 4 3 21 27
 Printing post order traversal of BST
 3 4 5 7 8 27 21 10
+Min value is 3
+Max value is 27
 
 */
