@@ -273,7 +273,7 @@ TOPOLOGICAL SORT USING BFS (Kahn's algorithm)
 Adjacency List
 1 -> 2, 3
 2 -> 5
-3 -> 5
+3 -> 5       Output: 1 2 3 5 4
 5 -> 4
 
 Implementation :

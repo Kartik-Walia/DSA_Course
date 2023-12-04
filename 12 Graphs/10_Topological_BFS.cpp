@@ -23,6 +23,7 @@ vector<int> topologicalSort(vector<vector<int> > &edges, int V, int E) {
 
     // Push node havign indegree 0 in queue
     queue<int> q;
+    // If node starts from 1, then replace for function with for(int i=1; i<=V; i++)
     for(int i=0; i<V; i++) {
         if(indegree[i] == 0) {
             q.push(i);
