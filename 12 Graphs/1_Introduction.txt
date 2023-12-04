@@ -40,6 +40,7 @@ If in graph, you're unable to create a path which allows you to reach to an alre
 
 
 
+======================================================================================================================================
 GRAPH REPRESENTATION 
 input -> (no. of nodes, no. of edges & edges list)
 1. Adjacency Matrix 
@@ -71,6 +72,7 @@ Graph having 2 or more components out of which atleast 1 set is disconnected
 
 
 
+======================================================================================================================================
 BFS TRAVERSAL (BREADTH FIRST SEARCH)
 In this traversal algorithm, 1 node is selected & then, all of the adjacent nodes are visited one by one.
 
@@ -116,6 +118,7 @@ Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
 
 
 
+======================================================================================================================================
 DEPTH TRAVERSAL (DEPTH FIRST SEARCH)
 In this traversal algorithm, starting from a node, the algorithm explores as far as possible along each branch before backtracking.
 
@@ -148,6 +151,7 @@ Time & Space Complexity : Linear
 
 
 
+======================================================================================================================================
 CYCLE DETECION IN UNDIRECTED GRAPH VIA BFS
 Let's consider undirected disconnected graph 
   1 -- 2          4 -- 5 -- 6
@@ -176,6 +180,7 @@ Time & Space Complexity (same as BFS) : O(N+E), where N -> no. of vertices & E -
 
 
 
+======================================================================================================================================
 CYCLE DETECION IN UNDIRECTED GRAPH VIA DFS
 Let's consider undirected disconnected graph 
   1 -- 2          4 -- 5 -- 6
@@ -193,6 +198,7 @@ In short, it would be completely same as DFS code, just 1 data structure of pare
 
 
 
+======================================================================================================================================
 CYCLE DETECTION IN DIRECTED GRAPH VIA DFS 
 Adjacency List 
   1 -> 2
@@ -212,6 +218,7 @@ If for a node, neighbour is visited & also it's dfsVisited is true, then cycle i
 
 
 
+======================================================================================================================================
 TOPOLOGICAL SORT
 It can be only applied to DAG (Directed Acyclic Graph)
 
@@ -296,6 +303,7 @@ Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
 
 
 
+======================================================================================================================================
 CYCLE DETECTION IN DIRECTED GRAPH VIA BFS 
 If we're able to find topological sort of directed graph, then it's a directed acyclic graph 
 But if we're unable to find valid topological sort of directed graph, then it must be cyclic graph 
@@ -307,6 +315,7 @@ Time & Space Complexity : O(N+E), where N -> no. of vertices & E -> no. of edges
 
 
 
+======================================================================================================================================
 SHORTEST PATH IN UNDIRECTED GRAPH VIA BFS 
 Step-1 : Create a parent data structure using BFS 
 Step-2 : Back Track from Destination node to Source node & store it in answer simultaneously
@@ -328,6 +337,7 @@ SHORTEST PATH IN DIRECTED ACYCLIC GRAPH (DAG)
 
 
 
+======================================================================================================================================
 SPANNING TREE 
 When you convert a graph into a tree such that it contains N nodes and N-1 edges & every node is reachable by any other node, then its known as "Spanning tree"
 
@@ -338,6 +348,7 @@ Conditions for Spanning Tree:
 
 MINIMUM SPANNING TREE (MST)
 Minimum cost of weight 
+
 
 PRIM'S ALGORITHM FOR MST 
 We need 3 data structures for Key(contains minimum distance between the nodes), MST(to track whether some node is included in MST or not) and Parent (Assuming indexing represent the nodes)
