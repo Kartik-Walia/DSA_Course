@@ -1,3 +1,5 @@
+// ===================================== PRIM'S ALGO VALID FOR THE CASE WHERE NODES STARTS FROM 1 =====================================
+
 #include<iostream>
 #include<unordered_map>
 #include<list>
@@ -28,6 +30,7 @@ vector<pair<pair<int, int>, int> > PrimMST(int n, int m, vector<pair<pair<int, i
     }
 
     // Let's Start the Algorithm
+    // Here source node is 1, coz considering case where nodes starts from 1 not 0
     key[1] = 0;
     parent[1] = -1; // Marking values for source node
 
@@ -41,6 +44,10 @@ vector<pair<pair<int, int>, int> > PrimMST(int n, int m, vector<pair<pair<int, i
                 mini = key[v];
             }
         }
+        // If i use min heap, then i can get minimum value in O(1) time. We can do so by replacing above loop with priority queue 
+        // In such case, time complexity would had been better i.e. O(nlogn)
+
+
         // Mark min node as true 
         mst[u] = true;
 
@@ -53,7 +60,7 @@ vector<pair<pair<int, int>, int> > PrimMST(int n, int m, vector<pair<pair<int, i
                 key[v] = wt;
             }
         }
-    }
+    }   // Parent data structure is fully prepared
 
     vector<pair<pair<int, int>, int> > result;
     // 1st int represents u, 2nd int represents v & 3rd int represents weight 
@@ -63,7 +70,6 @@ vector<pair<pair<int, int>, int> > PrimMST(int n, int m, vector<pair<pair<int, i
     }
 
     return result;
-
 }
 
 int main(){

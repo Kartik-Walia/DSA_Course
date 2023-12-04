@@ -340,7 +340,8 @@ MINIMUM SPANNING TREE (MST)
 Minimum cost of weight 
 
 PRIM'S ALGORITHM FOR MST 
-We need 3 data structures for Key, MST and Parent (Indexing represent the nodes)
+We need 3 data structures for Key(contains minimum distance between the nodes), MST(to track whether some node is included in MST or not) and Parent (Assuming indexing represent the nodes)
+Then, initialize all values
 In starting mark keys of al nodes as infinity
 In starting mark all nodes inside MST as False 
 In starting mark parent of all ndoes as -1 
@@ -351,3 +352,7 @@ Step-2 : Mark that node as true in MST
 Step-3 : Find all adjacent nodes of Source node & update their Key values (if it's current value is less than already present values) & mark their parents as well
 Step-4 : Repeat Step-1 to Step-3 untill all nodes in MST are marked as True
 Step-5 : Parent array is your final answer 
+
+Time Complexity : O(n^2)
+If i use min heap, then i can get minimum value in O(1) time. We can do so by replacing above loop with priority queue 
+In such case, time complexity would had been better i.e. O(nlogn)
