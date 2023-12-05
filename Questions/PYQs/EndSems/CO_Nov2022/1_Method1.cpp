@@ -44,11 +44,6 @@ void mergeHeaps(int A[], int n1, int B[], int n2, int C[]){
         C[n1+i] = B[i];
     }
 
-    for(int i=0; i < (n1 + n2); i++){
-        cout << C[i] << " ";
-    }
-    cout << endl;
-
     buildHeap(C, (n1 + n2));
 }
 

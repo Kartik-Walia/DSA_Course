@@ -1,5 +1,5 @@
 // This method involves merging the two heaps in - place without using additional memory.
-// It has a time complexity of O(n1 *log(n1 + n2)), making it more efficient in terms of space complexity.
+// It has a time complexity of O(n1 *log(n1 + n2)), making it more efficient.
 
 /*
 METHOD 2 : BETTER APPROACH
@@ -30,7 +30,7 @@ void maxHeapify(int arr[], int size, int i){
     }
 }
 
-void mergeHeapInPlace(int A[], int n1, int B[], int n2){    // n1 initial place to enter data & n2 is size 
+void mergeHeapInPlace(int A[], int n1, int B[], int n2){    // n1 initial index to enter data & n2 is size 
     for(int i=0; i < n2; i++){
         A[n1 + i] = B[i];
     }
