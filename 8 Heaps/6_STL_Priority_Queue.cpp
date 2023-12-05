@@ -28,8 +28,11 @@ int main(){
     cout << "Creating min heap" << endl;
     priority_queue<int, vector<int>, greater<int> > minHeap;
     // <int> : specifies the data type of the elements in the priority queue. In this case, it's an integer.
-    // <vector<int>> : specifies the underlying container used for priority queue. In this case, it's a vector.
-    // std::greater<int> : means smallest element will've highest priority, making priority queue act as min-heap.
+    // vector<int> : specifies the underlying container used for priority queue. In this case, it's a vector.
+    // greater<int> : means smallest element will've highest priority, making priority queue act as min-heap.
+
+    // Creating max heap
+    // priority_queue<int, vector<int>, less<int> > maxHeap;
 
     minHeap.push(4);
     minHeap.push(2);

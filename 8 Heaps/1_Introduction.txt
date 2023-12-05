@@ -1,6 +1,6 @@
 WHAT IS HEAP ?
 Heap is a data structure. 
-Heap is a complete bindary tres (BST) that comes with a heap order property.
+Heap is a complete binary tree (CBT) that comes with a heap order property.
 
 
 WHAT IS CBT (Complete Binary Tree) ?
@@ -15,7 +15,7 @@ WHAT IS HEAP ORDER PROPERTY ?
 
 HEAP IMPLEMENTATION 
 It's done in form of array 
-We place nothing at 0 index
+We place nothing at 0 index, so make array of size n+1
 
 Basic Property (1-based indexing):
 If any node is at ith index, then 
@@ -24,7 +24,7 @@ If any node is at ith index, then
 - It's parent would be at i/2 index 
 - It's leaf nodes lies from (n/2)+1 to nth index, where n is no. of elements in heap 
 
-For 0-based indexity,
+For 0-based indexing,
 - Left child is at (2*i)+1 index 
 - Right child is at (2*i)+2 index 
 - Heapify runs from (n/2)-1 to >=0
@@ -39,8 +39,7 @@ DELETION IN HEAP (Max heap)
 Remember we're talking about deletion of Root node 
 1. Put or Swap first node (root node) with Last node 
 2. Remove last node 
-3. Propagate root node to it's correct position 
-    (by comparing it with it's largest child among both children on basis of heap order property)
+3. Propagate root node to it's correct position (by comparing it with it's largest child among both children on basis of heap order property)
 Time Complexity is O(logn)
 
 
@@ -53,9 +52,8 @@ All leaf nodes can be assumed as Heap itself, no need to process Leaf nodes (No 
 If we're processing 1 to n index, then we don't need to process its (n/2)+1 to n index part bcoz they're heaps
 So, we only need to process the part from 1 to n/2, that is take these nodes to their right place
 Assume we're coming from right 
-1. Run a loop from n/2 to greater than 0, inside the loop we run hapify algorithm :  heapify(arr, size, i)
-2. Propagate each node to it's correct position 
-    (by comparing it with it's largest child among both children on basis of heap order property)
+1. Run a loop from n/2 to greater than 0, inside the loop we run heapify algorithm :  heapify(arr, size, i)
+2. Propagate each node to it's correct position (by comparing it with it's largest child among both children on basis of heap order property)
 
 Time Complexity of heapify operation is O(logn) 
 Build Heap from heapify has Time Complexity of O(n)
@@ -69,8 +67,7 @@ Time Complexity Analysis:
 Therefore, the overall time complexity is O(n).
 
 The bottom-up approach to building a heap using this loop has a linear time complexity of O(n).
-This makes it more efficient than inserting elements one by one into an initially empty heap, 
-which would take O(nlogn) time.
+This makes it more efficient than inserting elements one by one into an initially empty heap, which would take O(nlogn) time.
 
 Always remember < & > comes in case of 0-based indexing 
 Always remember <= & >= comes in case of 1-based indexing 

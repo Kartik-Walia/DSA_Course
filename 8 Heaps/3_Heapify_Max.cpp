@@ -13,7 +13,6 @@ void heapifyMax(int arr[], int size, int i){
     if(rightIndex <= size && arr[max] < arr[rightIndex]){
         max = rightIndex;
     }
-
     if(max != i){
         swap(arr[i],arr[max]);
         heapifyMax(arr, size, max);    // Neche ke saare members ko bhi toh check krna pdega!
@@ -36,6 +35,5 @@ int main(){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
-    
     return 0;
 }

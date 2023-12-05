@@ -14,10 +14,10 @@ Heap(){
 // Insertion in max heap 
 void insert(int val){
     size=size+1;    // 1-based indexing 
-    int index=size;
+    int index=size;     // Insert value at end (last index)
     arr[index]=val;
 
-    while(index>1){
+    while(index>1){     // Taking the inserted value to it's right position 
         int parent=index/2;
 
         if(arr[parent]<arr[index]){     // Assuming max heap
@@ -52,7 +52,7 @@ void deleteFromHeap(){
         if(rightIndex < size && arr[maxIndex] < arr[rightIndex]) {
             maxIndex = rightIndex;
         } 
-        if (i != maxIndex){
+        if (maxIndex != i){
             swap(arr[i], arr[maxIndex]);
             i = maxIndex;
         } else {
