@@ -1,47 +1,33 @@
 #include <iostream>
 using namespace std;
 
-// Updated definition for a binary tree node using class.
-class TreeNode {
-public:
-    int data;
+// Updated definition for a binary tree node.
+struct TreeNode {
+    int val;
     TreeNode* left;
     TreeNode* right;
     TreeNode* parent;  // Added parent pointer
-    TreeNode(int d) : data(d), left(NULL), right(NULL), parent(NULL) {}
-
-    // Assuming these functions are present in the TreeNode class
-    TreeNode* getLeft() const {
-        return left;
-    }
-
-    TreeNode* getRight() const {
-        return right;
-    }
-
-    TreeNode* getParent() const {
-        return parent;
-    }
+    TreeNode(int x) : val(x), left(NULL), right(NULL), parent(NULL) {}
 };
 
-TreeNode* findMin(TreeNode* root) {
-    while (root->getLeft() != NULL) {
-        root = root->getLeft();
+TreeNode* minVal(TreeNode* node) {
+    while (node->left != NULL) {
+        node = node->left;
     }
-    return root;
+    return node;
 }
 
 TreeNode* successor(TreeNode* x) {
-    if (x->getRight() != NULL) {
+    if (x->right != NULL) {
         // If the node has a right child, find the leftmost node in the right subtree
-        return findMin(x->getRight());
+        return minVal(x->right);
     } else {
         // If the node does not have a right child, go up the tree to find the first ancestor
         // whose left child is also an ancestor of the given node.
-        TreeNode* parent = x->getParent();
-        while (parent != NULL && x == parent->getRight()) {
+        TreeNode* parent = x->parent;
+        while (parent != NULL && x == parent->right) {
             x = parent;
-            parent = x->getParent();
+            parent = x->parent;
         }
         return parent;
     }
@@ -71,7 +57,7 @@ int main() {
     TreeNode* successorNode = successor(nodeToFindSuccessor);
 
     if (successorNode != NULL) {
-        cout << "Successor of " << nodeToFindSuccessor->data << " is: " << successorNode->data << endl;
+        cout << "Successor of " << nodeToFindSuccessor->val << " is: " << successorNode->val << endl;
     } else {
         cout << "No successor found." << endl;
     }

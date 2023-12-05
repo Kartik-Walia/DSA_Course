@@ -10,18 +10,15 @@ void partitionEvenOdd(int A[], int n) {
         while (A[left] % 2 == 0 && left < right) {
             left++;
         }
-
         // Move right pointer to the left until an even number is found
         while (A[right] % 2 != 0 && left < right) {
             right--;
         }
-
         // Swap the even and odd elements
         swap(A[left], A[right]);
     }
 }
 
-// Sample usage
 int main() {
     int A[] = {2, 7, 5, 10, 8, 3, 6};
     int n = sizeof(A) / sizeof(A[0]);
