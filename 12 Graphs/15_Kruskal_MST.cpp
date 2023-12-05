@@ -44,7 +44,7 @@ void unionSet(int u, int v, vector<int> &parent, vector<int> &rank) {
     }
 }
 
-int MST(vector<vector<int> > &edges, int N) {
+int MST(vector<vector<int> > &edges, int N, int &connectComp) {
     // Sort the edges on basis of weights
     sort(edges.begin(), edges.end(), cmp);
     // Sorting function time complexity is mlogm, where m is total number of  edges 
@@ -55,6 +55,7 @@ int MST(vector<vector<int> > &edges, int N) {
     makeSet(parent, rank, N);
 
     int minWeight = 0;
+    connectComp = N;
     for(int i=0; i<edges.size(); i++) {
         int u = findParent(parent, edges[i][0]);
         int v = findParent(parent, edges[i][1]);
@@ -63,6 +64,7 @@ int MST(vector<vector<int> > &edges, int N) {
         if(u != v) {        // When parents are different, merege/union
             minWeight += wt;
             unionSet(u, v, parent, rank);
+            connectComp--;
         }
     }
 
@@ -90,9 +92,11 @@ int main(){
         edges.push_back(temp);
     }
 
-    int minSpanningTreeWeight = MST(edges, N);
+    int connectComp;
+    int minSpanningTreeWeight = MST(edges, N, connectComp);
 
     cout << "Minimum Spanning Tree Weight: " << minSpanningTreeWeight << endl;
+    cout << "Number of connected components: " << connectComp << endl;
 
     return 0;
 }
