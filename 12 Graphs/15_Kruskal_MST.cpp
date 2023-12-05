@@ -138,4 +138,14 @@ Sample Input 3
 Sample Output 3
 Minimum Spanning Tree Weight: 17
 
+Connected Components Sample Input
+5
+4
+0 1 1
+0 2 1
+1 2 1
+3 4 1
+Minimum Spanning Tree Weight: 3
+Number of connected components: 2
+
 */
